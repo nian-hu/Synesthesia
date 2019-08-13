@@ -24,7 +24,6 @@ window.onload = function () {
     analyser.connect(context.destination);
 
     analyser.fftSize = 16384;
-    // analyser.fftSize = 1024;
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
     // console.log(dataArray);
@@ -34,7 +33,6 @@ window.onload = function () {
     const WIDTH = canvas.width;
     const HEIGHT = canvas.height;
     const barWidth = (WIDTH / bufferLength) * 13;
-    // const barWidth = (WIDTH / bufferLength) * 2;
 
     let barHeight;
     let x = 0;
@@ -46,46 +44,30 @@ window.onload = function () {
       analyser.getByteFrequencyData(dataArray); // frequencies
       ctx.fillStyle = "rgba(0,0,0,0.2)";
       ctx.fillRect(0, 0, WIDTH, HEIGHT);
-      // console.log(dataArray);
+      console.log(dataArray);
 
       let r, g, b;
       let bars = 118;
 
-      // split the data array in 4 equal parts
-      let quarterLength = dataArray.length / 4;
-
-      let first = dataArray.slice(0, quarterLength);
-      let second = dataArray.slice(quarterLength, quarterLength * 2);
-      let third = dataArray.slice(quarterLength * 2, quarterLength * 3);
-      let fourth = dataArray.slice(quarterLength * 3, quarterLength * 4);
-
-      let newArr = [first, second, third, fourth];
-      // console.log(newArr);
-
-      for (let j = 0; j < newArr.length; j++) {
-
-        let subArr = newArr[j];
-        // j is the section
-      
       for (let i = 0; i < bars; i++) {
-        barHeight = (subArr[i] * 2.5);
+        barHeight = (dataArray[i] * 2.5);
 
         //change it to frequency range
         //get vol and freq
 
-        if (subArr[i] > 210) { // hot pink 210
+        if (dataArray[i] > 210) { // hot pink 210
           r = 255
           g = 0
           b = 174
-        } else if (subArr[i] > 190) { // cyan 200
+        } else if (dataArray[i] > 190) { // cyan 200
           r = 0
           g = 255
           b = 251
-        } else if (subArr[i] > 170) { // yellow 190
+        } else if (dataArray[i] > 170) { // yellow 190
           r = 242
           g = 255
           b = 0
-        } else if (subArr[i] > 150) { // lime green 180
+        } else if (dataArray[i] > 150) { // lime green 180
           r = 106
           g = 255
           b = 0
@@ -100,7 +82,7 @@ window.onload = function () {
 
         x += barWidth + 10;
 
-        // // Rendering the gray arrows at the top of the screen
+        // Rendering the gray arrows at the top of the screen
 
         let leftArrow = document.getElementById("left-arrow");
         let downArrow = document.getElementById("down-arrow");
@@ -113,8 +95,6 @@ window.onload = function () {
         ctx.drawImage(rightArrow, 1100, 10)
 
       }
-
-    }
     }
 
     // function renderArrows() {
