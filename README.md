@@ -1,0 +1,2 @@
+# Synesthesia
+A music visualizer
