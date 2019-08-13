@@ -28,31 +28,31 @@ In Synesthesia, users will be able to
 
 ## Implementation Timeline
 
-Day 1
+### Day 1
 * Start canvas mapping and animation
 * Research Web Audio API
 * Develop project skeleton
 
-Day 2
+### Day 2
 * Use Web Audio API to analyze music and map data points onto canvas
 
-Day 3
+### Day 3
 * Continue to use Web Audio API to analyze music and map data points onto canvas in desired visualizer shape and animation 
 
-Day 4
+### Day 4
 * Render play bar at the bottom
 * Give user the option to upload an MP3 file
 * Provide options for users to select up to four colors for visualizer
 
-Day 5
+### Day 5
 * Measure length of visualizer in cardinal directions and determine where user should press arrow keys
 * Start logic for user to press arrow keys whenever the visualizer reaches a certain length
 
-Day 6
+### Day 6
 * Continue working on logic for user to press arrow keys at the same time as the visualizer reaching a certain length
 * Give the user points for accurately pressing on the correct arrow key
 
-Day 7
+### Day 7
 * Finish any remaining game/visualizer logic
 
 
