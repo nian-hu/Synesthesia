@@ -47,3 +47,8 @@ audio:focus {
   0%{ background-position: 0 0; }
   100%{ background-position: 8px 8px; }
 }
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+}

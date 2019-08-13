@@ -17,7 +17,7 @@ window.onload = function () {
     //
 
     const context = new AudioContext();
-    let src = context.createMediaElementSource(audio); 
+    let src = context.createMediaElementSource(audio);
     const analyser = context.createAnalyser();
 
     src.connect(analyser);
@@ -35,7 +35,7 @@ window.onload = function () {
     const barWidth = (WIDTH / bufferLength) * 13;
 
     let barHeight;
-    let x = 0; 
+    let x = 0;
 
     function renderFrame() {
       requestAnimationFrame(renderFrame);
@@ -48,6 +48,37 @@ window.onload = function () {
 
       let r, g, b;
       let bars = 118;
+
+      // split the data array in 4 equal parts
+      let quarterLength = dataArray.length / 4;
+      let first = dataArray.slice(0, quarterLength);
+      let second = dataArray.slice(quarterLength, quarterLength * 2);
+      let third = dataArray.slice(quarterLength * 2, quarterLength * 3);
+      let fourth = dataArray.slice(quarterLength * 3, quarterLength * 4);
+      let newArr = [first, second, third, fourth];
+
+      function renderArrows() {
+        // ctx.fillStyle = `rgb(${r},${g},${b})`;
+        // ctx.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
+
+        // x += barWidth + 10;
+
+        // Rendering the gray arrows at the top of the screen
+
+        let leftArrow = document.getElementById("left-arrow");
+        let downArrow = document.getElementById("down-arrow");
+        let upArrow = document.getElementById("up-arrow");
+        let rightArrow = document.getElementById("right-arrow");
+
+        ctx.drawImage(leftArrow, 10, 10)
+        ctx.drawImage(downArrow, 365, 10)
+        ctx.drawImage(upArrow, 726, 10)
+        ctx.drawImage(rightArrow, 1100, 10)
+      }
+
+      for (let j = 0; j < newArr.length; j++) {
+
+      }
 
       for (let i = 0; i < bars; i++) {
         barHeight = (dataArray[i] * 2.5);
@@ -82,17 +113,17 @@ window.onload = function () {
 
         x += barWidth + 10;
 
-        // Rendering the gray arrows at the top of the screen
+        // // Rendering the gray arrows at the top of the screen
 
-        let leftArrow = document.getElementById("left-arrow");
-        let downArrow = document.getElementById("down-arrow");
-        let upArrow = document.getElementById("up-arrow");
-        let rightArrow = document.getElementById("right-arrow");
+        // let leftArrow = document.getElementById("left-arrow");
+        // let downArrow = document.getElementById("down-arrow");
+        // let upArrow = document.getElementById("up-arrow");
+        // let rightArrow = document.getElementById("right-arrow");
 
-        ctx.drawImage(leftArrow, 10, 10)
-        ctx.drawImage(downArrow, 365, 10)
-        ctx.drawImage(upArrow, 726, 10)
-        ctx.drawImage(rightArrow, 1100, 10)
+        // ctx.drawImage(leftArrow, 10, 10)
+        // ctx.drawImage(downArrow, 365, 10)
+        // ctx.drawImage(upArrow, 726, 10)
+        // ctx.drawImage(rightArrow, 1100, 10)
 
       }
     }
@@ -107,8 +138,8 @@ window.onload = function () {
     // }
 
     audio.play();
-    renderFrame(); 
+    renderFrame();
     // renderArrows();
 
-  } 
+  }
 }

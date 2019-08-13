@@ -1,0 +1,5 @@
+class Arrow {
+  constructor() {
+    
+  }
+}
