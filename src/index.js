@@ -34,7 +34,7 @@ window.onload = function () {
 
     const WIDTH = canvas.width;
     const HEIGHT = canvas.height;
-    const barWidth = (WIDTH / bufferLength) * 9; // 13
+    const barWidth = (WIDTH / bufferLength) * 9; // 13, 9
     // const barWidth = (WIDTH / bufferLength) * 2;
 
     let barHeight;
@@ -76,7 +76,7 @@ window.onload = function () {
       //   debugger
       // }
       for (let i = 0; i < 10; i++) { // 30
-        barHeight = (subArr[i] * 4); // 2.5 
+        barHeight = (subArr[i] * 2.5); // 2.5, 4
 
         //change it to frequency range
         //get vol and freq
@@ -105,7 +105,7 @@ window.onload = function () {
         // lighter
         // 255, 195, 87
 
-        if (j === 0 && subArr[i] > 240) { // 210, 230
+        if (j === 0 && subArr[i] > 250) { // 210, 230, 240 (skinny)
           // debugger
           // we are in the first section
           // hot pink
@@ -124,12 +124,12 @@ window.onload = function () {
         //   r = 252
         //   g = 217
         //   b = 241
-        } else if (j === 0 && subArr[i] < 240) { // 210, 230
+        } else if (j === 0 && subArr[i] < 250) { // 210, 230
           //everything else is light pink
           r = 71
           g = 4
           b = 70
-        } else if (j === 1 && subArr[i] > 140) { // 120, 130
+        } else if (j === 1 && subArr[i] > 190) { // 120, 130, 140 (skinny), 180
           // debugger
           // cyan
           r = 0
@@ -147,12 +147,12 @@ window.onload = function () {
         //   r = 217
         //   g = 252
         //   b = 252
-        } else if (j === 1 && subArr[i] < 140) { // 120, 130
+        } else if (j === 1 && subArr[i] < 190) { // 120, 130
           // light cyan
           r = 2
           g = 64
           b = 79
-        } else if (j === 2 && subArr[i] > 120) { // 100, 110
+        } else if (j === 2 && subArr[i] > 170) { // 100, 110, 120 (skinny)
           //third
           //chartreuse
           r = 223
@@ -170,12 +170,12 @@ window.onload = function () {
         //   r = 246
         //   g = 247
         //   b = 213
-        } else if (j === 2 && subArr[i] < 120) { // 100, 110
+        } else if (j === 2 && subArr[i] < 170) { // 100, 110
           //light chartreuse
           r = 4
           g = 71
           b = 9
-        } else if (j === 3 && subArr[i] > 40) { // 30
+        } else if (j === 3 && subArr[i] > 50) { // 30, 40 (skinny)
           //fourth section
           //orange
           r = 255
@@ -194,7 +194,7 @@ window.onload = function () {
         //   r = 210
         //   g = 250
         //   b = 213
-        } else if (j === 3 && subArr[i] < 40) { // 30
+        } else if (j === 3 && subArr[i] < 50) { // 30
           r = 71
           g = 14
           b = 4
