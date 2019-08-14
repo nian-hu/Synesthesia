@@ -63,6 +63,10 @@ window.onload = function () {
 
       let newArr = [first, second, third, fourth];
       // console.log(newArr);
+      // console.log(fourth);
+      // console.log(third);
+      // console.log(second);
+      // console.log(first);
 
       for (let j = 0; j < newArr.length; j++) {
 
@@ -72,95 +76,128 @@ window.onload = function () {
       //   debugger
       // }
       for (let i = 0; i < 30; i++) {
-        barHeight = (subArr[i] * 2.5);
+        barHeight = (subArr[i] * 4); // 2.5 
 
         //change it to frequency range
         //get vol and freq
 
-        if (j === 0 && subArr[i] > 210) {
+        // j === 0 (left)
+        // hot pink
+        // 255, 0, 191
+        // lighter
+        // 255, 130, 224
+
+        // j === 1 (down)
+        // cyan
+        // 0, 255, 221
+        // lighter
+        // 145, 255, 241
+
+        // j === 2 (up) 
+        // chartreuse
+        // 223, 255, 42
+        // lighter
+        // 234, 255, 115
+
+        // j === 3
+        // orange
+        // 255, 164, 0
+        // lighter
+        // 255, 195, 87
+
+        if (j === 0 && subArr[i] > 240) { // 210, 230
           // debugger
           // we are in the first section
+          // hot pink
           r = 255
           g = 0
-          b = 170
-        } else if (j === 0 && subArr[i] > 190) {
-          r = 255
-          g = 97
-          b = 202
-        } else if (j === 0 && subArr[i] > 170) {
-          r = 255
-          g = 166
-          b = 225
-        } else if (j === 0 && subArr[i] > 150) {
-          r = 252
-          g = 217
-          b = 241
-        } else if (j === 0 && subArr[i] < 150) {
-          r = 60
-          g = 0
-          b = 250
-        } else if (j === 1 && subArr[i] > 210) {
+          b = 191
+        // } else if (j === 0 && subArr[i] > 190) {
+        //   r = 255
+        //   g = 97
+        //   b = 202
+        // } else if (j === 0 && subArr[i] > 170) {
+        //   r = 255
+        //   g = 166
+        //   b = 225
+        // } else if (j === 0 && subArr[i] > 150) {
+        //   r = 252
+        //   g = 217
+        //   b = 241
+        } else if (j === 0 && subArr[i] < 240) { // 210, 230
+          //everything else is light pink
+          r = 71
+          g = 4
+          b = 70
+        } else if (j === 1 && subArr[i] > 140) { // 120, 130
           // debugger
+          // cyan
           r = 0
           g = 255
           b = 251
-        } else if (j === 1 && subArr[i] > 190) {
-          r = 63
-          g = 217
-          b = 214
-        } else if (j === 1 && subArr[i] > 170) {
-          r = 160
-          g = 250
-          b = 248
-        } else if (j === 1 && subArr[i] > 150) {
-          r = 217
-          g = 252
-          b = 252
-        } else if (j === 1 && subArr[i] < 150) {
-          r = 255 // orange
-          g = 157
-          b = 0
-        } else if (j === 2 && subArr[i] > 210) {
-          r = 246
+        // } else if (j === 1 && subArr[i] > 190) {
+        //   r = 63
+        //   g = 217
+        //   b = 214
+        // } else if (j === 1 && subArr[i] > 170) {
+        //   r = 160
+        //   g = 250
+        //   b = 248
+        // } else if (j === 1 && subArr[i] > 150) {
+        //   r = 217
+        //   g = 252
+        //   b = 252
+        } else if (j === 1 && subArr[i] < 140) { // 120, 130
+          // light cyan
+          r = 2
+          g = 64
+          b = 79
+        } else if (j === 2 && subArr[i] > 120) { // 100, 110
+          //third
+          //chartreuse
+          r = 223
           g = 255
+          b = 42
+        // } else if (j === 2 && subArr[i] > 190) {
+        //   r = 240
+        //   g = 245
+        //   b = 98
+        // } else if (j === 2 && subArr[i] > 170) {
+        //   r = 248
+        //   g = 250
+        //   b = 182
+        // } else if (j === 2 && subArr[i] > 150) {
+        //   r = 246
+        //   g = 247
+        //   b = 213
+        } else if (j === 2 && subArr[i] < 120) { // 100, 110
+          //light chartreuse
+          r = 4
+          g = 71
+          b = 9
+        } else if (j === 3 && subArr[i] > 40) { // 30
+          //fourth section
+          //orange
+          r = 255
+          g = 164
           b = 0
-        } else if (j === 2 && subArr[i] > 190) {
-          r = 240
-          g = 245
-          b = 98
-        } else if (j === 2 && subArr[i] > 170) {
-          r = 248
-          g = 250
-          b = 182
-        } else if (j === 2 && subArr[i] > 150) {
-          r = 246
-          g = 247
-          b = 213
-        } else if (j === 2 && subArr[i] < 150) {
-          r = 94 // lime green
-          g = 255
-          b = 0
-        } else if (j === 3 && subArr[i] > 210) {
-          r = 0
-          g = 255
-          b = 21
-        } else if (j === 3 && subArr[i] > 190) {
-          r = 60
-          g = 207
-          b = 72
-        } else if (j === 3 && subArr[i] > 170) {
-          r = 154
-          g = 252
-          b = 162
-        } else if (j === 3 && subArr[i] > 150) {
-          // debugger
-          r = 210
-          g = 250
-          b = 213
-        } else if (j === 3 && subArr[i] < 150) {
-          r = 217
-          g = 0
-          b = 255
+        // } else if (j === 3 && subArr[i] > 190) {
+        //   r = 60
+        //   g = 207
+        //   b = 72
+        // } else if (j === 3 && subArr[i] > 170) {
+        //   r = 154
+        //   g = 252
+        //   b = 162
+        // } else if (j === 3 && subArr[i] > 150) {
+        //   // debugger
+        //   r = 210
+        //   g = 250
+        //   b = 213
+        } else if (j === 3 && subArr[i] < 40) { // 30
+          r = 71
+          g = 14
+          b = 4
         }
 
 
