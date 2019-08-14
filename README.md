@@ -2,22 +2,21 @@
 
 ## Background and Overview
 
-Synesthesia is an audio visualizer made using Web Audio API and Canvas. The visualizer is circular in shape, with protrusions of varying lengths at the top, left, right, and bottom that are generated and rendered in real time and synchronized with a piece of music.
+Synesthesia is an audio visualizer made using Web Audio API and Canvas. The visualizer consists of frequency bars of varying heights that are generated and rendered in real time and synchronized with a piece of music.
 
-In the future, Synesthesia will also be a rhythm-based game in which users press the arrow keys at the same time as the protrusions of a given direction — top, left, right, or bottom. Once the protrusion reaches a certain length, the user will be expected to press the corresponding arrow key and accumulate points throughout the duration of the song. Failure to do so, or key presses when there is no corresponding protrusion, would result in point deduction.
+Synesthesia is also a rhythm-based game. As soon as the frequency bars reach a certain height on the screen, the arrow key on the corresponding section of the screen will change color, thus indicating to the user that they are expected to press that particular arrow key. In doing so, users can accumulate points throughout the duration of the song. 
 
 ## Functionality and MVPs
 
 In Synesthesia, users will be able to
 * Upload any MP3 file of their choice
-* Choose the four primary colors of the visualizer
 * See the music visualization in real time
 * Start, pause, and restart the visualization
-* (Bonus) Accumulate points by successfully pressing the corresponding arrow keys at the same time as the visualization
+* (Bonus) Play a rhythm-based game that is synchronized with the visualization
 
-## Wireframes
+## Screenshots
 
-![](src/assets/Synesthesia_Wireframe.jpg)
+![](src/assets/Synesthesia_Wireframe.png)
 
 ## Technologies and APIs
 
