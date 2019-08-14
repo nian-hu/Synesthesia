@@ -112,6 +112,11 @@ window.onload = function () {
           r = 255
           g = 0
           b = 191
+
+          // ARROW RENDERING ATTEMPT:
+          // let coloredLeftArrow = document.getElementById("colored-left-arrow")
+          // ctx.drawImage(coloredLeftArrow, 20, 10)
+
         // } else if (j === 0 && subArr[i] > 190) {
         //   r = 255
         //   g = 97
@@ -235,14 +240,28 @@ window.onload = function () {
         let upArrow = document.getElementById("up-arrow");
         let rightArrow = document.getElementById("right-arrow");
 
-        ctx.drawImage(leftArrow, 10, 10)
-        ctx.drawImage(downArrow, 365, 10)
-        ctx.drawImage(upArrow, 726, 10)
-        ctx.drawImage(rightArrow, 1100, 10)
+        let coloredLeftArrow = document.getElementById("colored-left-arrow")
+        
+        if (j === 0 && subArr[i] > 250) {
+          ctx.drawImage(coloredLeftArrow, 10, 10)
+          ctx.clearImage(leftArrow)
+        } else {
+          ctx.drawImage(leftArrow, 10, 10)
+        }
+
+        // ctx.drawImage(leftArrow, 10, 10)
+        // ctx.drawImage(downArrow, 365, 10)
+        // ctx.drawImage(upArrow, 726, 10)
+        // ctx.drawImage(rightArrow, 1100, 10)
+        ctx.drawImage(downArrow, 365, 60)
+        ctx.drawImage(upArrow, 726, 60)
+        ctx.drawImage(rightArrow, 1100, 60)
 
       }
 
+      
     }
+
     }
 
     // function renderArrows() {
