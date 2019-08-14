@@ -39,6 +39,7 @@ window.onload = function () {
 
     let barHeight;
     let x = 0;
+    // let x = 10
 
     function renderFrame() {
       requestAnimationFrame(renderFrame);
@@ -76,7 +77,7 @@ window.onload = function () {
       //   debugger
       // }
       for (let i = 0; i < 10; i++) { // 30
-        barHeight = (subArr[i] * 2.5); // 2.5, 4
+        barHeight = (subArr[i] * 2.5); // 2.5 - good
 
         //change it to frequency range
         //get vol and freq
@@ -231,6 +232,7 @@ window.onload = function () {
         ctx.fillStyle = `rgb(${r},${g},${b})`;
         ctx.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
 
+        // x += barWidth + 2;
         x += barWidth + 10;
 
         // // Rendering the gray arrows at the top of the screen
@@ -241,21 +243,48 @@ window.onload = function () {
         let rightArrow = document.getElementById("right-arrow");
 
         let coloredLeftArrow = document.getElementById("colored-left-arrow")
+        let coloredDownArrow = document.getElementById("colored-down-arrow")
+        let coloredUpArrow = document.getElementById("colored-up-arrow")
+        let coloredRightArrow = document.getElementById("colored-right-arrow")
         
         if (j === 0 && subArr[i] > 250) {
+          // ctx.clearRect(10, 10, 120, 120)
           ctx.drawImage(coloredLeftArrow, 10, 10)
-          ctx.clearImage(leftArrow)
+          // ctx.clearImage(leftArrow)
         } else {
           ctx.drawImage(leftArrow, 10, 10)
+        }
+
+        if (j === 1 && subArr[i] > 190) {
+          ctx.drawImage(coloredDownArrow, 365, 10)
+          ctx.clearImage(downArrow)
+        } else {
+          ctx.drawImage(downArrow, 365, 10)
+        }
+
+        if (j === 2 && subArr[i] > 170) {
+          ctx.drawImage(coloredUpArrow, 726, 10)
+          ctx.clearImage(upArrow)
+        } else {
+          ctx.drawImage(upArrow, 726, 10)
+        }
+
+        if (j === 3 && subArr[i] > 50) {
+          ctx.drawImage(coloredRightArrow, 1100, 10)
+          ctx.clearImage(rightArrow)
+        } else {
+          ctx.drawImage(rightArrow, 1100, 10)
         }
 
         // ctx.drawImage(leftArrow, 10, 10)
         // ctx.drawImage(downArrow, 365, 10)
         // ctx.drawImage(upArrow, 726, 10)
         // ctx.drawImage(rightArrow, 1100, 10)
-        ctx.drawImage(downArrow, 365, 60)
-        ctx.drawImage(upArrow, 726, 60)
-        ctx.drawImage(rightArrow, 1100, 60)
+
+        // experimental
+        // ctx.drawImage(downArrow, 365, 60)
+        // ctx.drawImage(upArrow, 726, 60)
+        // ctx.drawImage(rightArrow, 1100, 60)
 
       }
 
