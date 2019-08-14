@@ -23,8 +23,8 @@ window.onload = function () {
     src.connect(analyser);
     analyser.connect(context.destination);
 
-    analyser.fftSize = 16384;
-    // analyser.fftSize = 1024;
+    // analyser.fftSize = 16384;
+    analyser.fftSize = 1024;
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
     // console.log(dataArray);
@@ -34,7 +34,7 @@ window.onload = function () {
 
     const WIDTH = canvas.width;
     const HEIGHT = canvas.height;
-    const barWidth = (WIDTH / bufferLength) * 13;
+    const barWidth = (WIDTH / bufferLength) * 9; // 13
     // const barWidth = (WIDTH / bufferLength) * 2;
 
     let barHeight;
@@ -50,7 +50,7 @@ window.onload = function () {
       // console.log(dataArray);
 
       let r, g, b;
-      let bars = 118;
+      let bars = 40; // 118
 
       // split the data array in 4 equal parts
       let quarterLength = dataArray.length / 4;
@@ -75,7 +75,7 @@ window.onload = function () {
       // if (j === 1) { 
       //   debugger
       // }
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 10; i++) { // 30
         barHeight = (subArr[i] * 4); // 2.5 
 
         //change it to frequency range
