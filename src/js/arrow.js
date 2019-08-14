@@ -1,5 +1,0 @@
-class Arrow {
-  constructor() {
-    
-  }
-}

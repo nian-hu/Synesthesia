@@ -8,7 +8,7 @@ window.onload = function () {
   file.onchange = function () {
 
     const files = this.files;
-    audio.src = URL.createObjectURL(files[0]); // look at what files is, figure out how to queue them up
+    audio.src = URL.createObjectURL(files[0]); 
 
     // canvas initialization
     canvas.width = window.innerWidth;
