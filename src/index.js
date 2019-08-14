@@ -28,6 +28,7 @@ window.onload = function () {
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
     // console.log(dataArray);
+    // [250, 190, 0, 270]
 
     // analyser.getByteFrequencyData(dataArray)
 
@@ -55,6 +56,7 @@ window.onload = function () {
       let quarterLength = dataArray.length / 4;
 
       let first = dataArray.slice(0, quarterLength);
+      // debugger
       let second = dataArray.slice(quarterLength, quarterLength * 2);
       let third = dataArray.slice(quarterLength * 2, quarterLength * 3);
       let fourth = dataArray.slice(quarterLength * 3, quarterLength * 4);
@@ -66,34 +68,123 @@ window.onload = function () {
 
         let subArr = newArr[j];
         // j is the section
-      
-      for (let i = 0; i < bars; i++) {
+      // if (j === 1) { 
+      //   debugger
+      // }
+      for (let i = 0; i < 30; i++) {
         barHeight = (subArr[i] * 2.5);
 
         //change it to frequency range
         //get vol and freq
 
-        if (subArr[i] > 210) { // hot pink 210
+        if (j === 0 && subArr[i] > 210) {
+          // debugger
+          // we are in the first section
           r = 255
           g = 0
-          b = 174
-        } else if (subArr[i] > 190) { // cyan 200
+          b = 170
+        } else if (j === 0 && subArr[i] > 190) {
+          r = 255
+          g = 97
+          b = 202
+        } else if (j === 0 && subArr[i] > 170) {
+          r = 255
+          g = 166
+          b = 225
+        } else if (j === 0 && subArr[i] > 150) {
+          r = 252
+          g = 217
+          b = 241
+        } else if (j === 0 && subArr[i] < 150) {
+          r = 60
+          g = 0
+          b = 250
+        } else if (j === 1 && subArr[i] > 210) {
+          // debugger
           r = 0
           g = 255
           b = 251
-        } else if (subArr[i] > 170) { // yellow 190
-          r = 242
+        } else if (j === 1 && subArr[i] > 190) {
+          r = 63
+          g = 217
+          b = 214
+        } else if (j === 1 && subArr[i] > 170) {
+          r = 160
+          g = 250
+          b = 248
+        } else if (j === 1 && subArr[i] > 150) {
+          r = 217
+          g = 252
+          b = 252
+        } else if (j === 1 && subArr[i] < 150) {
+          r = 255 // orange
+          g = 157
+          b = 0
+        } else if (j === 2 && subArr[i] > 210) {
+          r = 246
           g = 255
           b = 0
-        } else if (subArr[i] > 150) { // lime green 180
-          r = 106
+        } else if (j === 2 && subArr[i] > 190) {
+          r = 240
+          g = 245
+          b = 98
+        } else if (j === 2 && subArr[i] > 170) {
+          r = 248
+          g = 250
+          b = 182
+        } else if (j === 2 && subArr[i] > 150) {
+          r = 246
+          g = 247
+          b = 213
+        } else if (j === 2 && subArr[i] < 150) {
+          r = 94 // lime green
           g = 255
           b = 0
-        } else { // orange
-          r = 255
-          g = 166
-          b = 0
+        } else if (j === 3 && subArr[i] > 210) {
+          r = 0
+          g = 255
+          b = 21
+        } else if (j === 3 && subArr[i] > 190) {
+          r = 60
+          g = 207
+          b = 72
+        } else if (j === 3 && subArr[i] > 170) {
+          r = 154
+          g = 252
+          b = 162
+        } else if (j === 3 && subArr[i] > 150) {
+          // debugger
+          r = 210
+          g = 250
+          b = 213
+        } else if (j === 3 && subArr[i] < 150) {
+          r = 217
+          g = 0
+          b = 255
         }
+
+
+        // if (subArr[i] > 210) { // hot pink 210
+        //   r = 255
+        //   g = 0
+        //   b = 174
+        // } else if (subArr[i] > 190) { // cyan 200
+        //   r = 0
+        //   g = 255
+        //   b = 251
+        // } else if (subArr[i] > 170) { // yellow 190
+        //   r = 242
+        //   g = 255
+        //   b = 0
+        // } else if (subArr[i] > 150) { // lime green 180
+        //   r = 106
+        //   g = 255
+        //   b = 0
+        // } else { // orange
+        //   r = 255
+        //   g = 166
+        //   b = 0
+        // }
 
         ctx.fillStyle = `rgb(${r},${g},${b})`;
         ctx.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
