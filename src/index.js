@@ -3,6 +3,7 @@ import './scss/main.scss'
 window.onload = function () {
   const file = document.getElementById("file-input");
   const canvas = document.getElementById("canvas");
+  const canvas_bottom = document.getElementById("canvas_bottom");
   const audio = document.getElementById("audio");
 
   file.onchange = function () {
@@ -14,6 +15,12 @@ window.onload = function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const ctx = canvas.getContext("2d");
+    //
+
+    // second canvas
+    canvas_bottom.width = window.innerWidth;
+    canvas_bottom.height = window.innerHeight;
+    const ctx_bottom = canvas_bottom.getContext("2d");
     //
 
     const context = new AudioContext();
@@ -46,8 +53,12 @@ window.onload = function () {
       x = 0;
 
       analyser.getByteFrequencyData(dataArray); // frequencies
-      ctx.fillStyle = "rgba(0,0,0,0.2)";
-      ctx.fillRect(0, 0, WIDTH, HEIGHT);
+      // ctx.fillStyle = "rgba(0,0,0,0.2)";
+      // ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+      ctx_bottom.fillStyle = "rgba(0,0,0,0.2)";
+      ctx_bottom.fillRect(0, 0, WIDTH, HEIGHT);
+
       // console.log(dataArray);
 
       let r, g, b;
@@ -107,7 +118,6 @@ window.onload = function () {
         // 255, 195, 87
 
         if (j === 0 && subArr[i] > 250) { // 210, 230, 240 (skinny)
-          // debugger
           // we are in the first section
           // hot pink
           r = 255
@@ -229,52 +239,135 @@ window.onload = function () {
         //   b = 0
         // }
 
-        ctx.fillStyle = `rgb(${r},${g},${b})`;
-        ctx.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
+        ctx_bottom.fillStyle = `rgb(${r},${g},${b})`;
+        ctx_bottom.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
 
         // x += barWidth + 2;
         x += barWidth + 10;
 
         // // Rendering the gray arrows at the top of the screen
 
-        let leftArrow = document.getElementById("left-arrow");
-        let downArrow = document.getElementById("down-arrow");
-        let upArrow = document.getElementById("up-arrow");
-        let rightArrow = document.getElementById("right-arrow");
+        // let leftArrow = document.getElementById("left-arrow");
+        // let downArrow = document.getElementById("down-arrow");
+        // let upArrow = document.getElementById("up-arrow");
+        // let rightArrow = document.getElementById("right-arrow");
 
-        let coloredLeftArrow = document.getElementById("colored-left-arrow")
-        let coloredDownArrow = document.getElementById("colored-down-arrow")
-        let coloredUpArrow = document.getElementById("colored-up-arrow")
-        let coloredRightArrow = document.getElementById("colored-right-arrow")
-        
-        if (j === 0 && subArr[i] > 250) {
-          // ctx.clearRect(10, 10, 120, 120)
-          ctx.drawImage(coloredLeftArrow, 10, 10)
-          // ctx.clearImage(leftArrow)
-        } else {
-          ctx.drawImage(leftArrow, 10, 10)
+        // let coloredLeftArrow = document.getElementById("colored-left-arrow")
+        // let coloredDownArrow = document.getElementById("colored-down-arrow")
+        // let coloredUpArrow = document.getElementById("colored-up-arrow")
+        // let coloredRightArrow = document.getElementById("colored-right-arrow")
+
+        let coloredLeftArrow = new Image();
+        coloredLeftArrow.src = "src/assets/colored_left_arrow.png";
+
+        let leftArrow = new Image();
+        leftArrow.src = "src/assets/left_arrow.png";
+
+        let coloredDownArrow = new Image();
+        coloredDownArrow.src = "src/assets/colored_down_arrow.png";
+
+        let downArrow = new Image();
+        downArrow.src = "src/assets/down_arrow.png";
+
+        let coloredUpArrow = new Image();
+        coloredUpArrow.src = "src/assets/colored_up_arrow.png";
+
+        let upArrow = new Image();
+        upArrow.src = "src/assets/up_arrow.png";
+
+        let coloredRightArrow = new Image();
+        coloredRightArrow.src = "src/assets/colored_right_arrow.png";
+
+        let rightArrow = new Image();
+        rightArrow.src = "src/assets/right_arrow.png";
+
+        // necessary? idk
+        // ctx_bottom.drawImage(leftArrow, 10, 10);
+
+        // if (j === 0 && subArr[i] > 250) { 
+        if (j === 0 && subArr[i] > 250) { 
+          // ctx.clearRect(10, 50, 120, 120);
+          // ctx.clearRect(0, 0, canvas.width, canvas.height)
+          // debugger
+          ctx.drawImage(coloredLeftArrow, 10, 10); // 50
+          // setTimeout()
+          // ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          // ctx.clearRect(10, 10, 120, 120); 
+        } 
+        // KINDA FLICKERS
+        else if (j === 0 && subArr[i] < 150) {
+          ctx.drawImage(leftArrow, 10, 10); // 50
         }
 
         if (j === 1 && subArr[i] > 190) {
-          ctx.drawImage(coloredDownArrow, 365, 10)
-          ctx.clearImage(downArrow)
-        } else {
-          ctx.drawImage(downArrow, 365, 10)
+          ctx.drawImage(coloredDownArrow, 365, 10);
+        } else if (j === 0 && subArr[i] < 150) {
+          ctx.drawImage(downArrow, 365, 10); 
         }
 
         if (j === 2 && subArr[i] > 170) {
-          ctx.drawImage(coloredUpArrow, 726, 10)
-          ctx.clearImage(upArrow)
-        } else {
-          ctx.drawImage(upArrow, 726, 10)
+          ctx.drawImage(coloredUpArrow, 726, 10);
+        } else if (j === 0 && subArr[i] < 130) {
+          ctx.drawImage(upArrow, 726, 10);
         }
 
         if (j === 3 && subArr[i] > 50) {
-          ctx.drawImage(coloredRightArrow, 1100, 10)
-          ctx.clearImage(rightArrow)
-        } else {
-          ctx.drawImage(rightArrow, 1100, 10)
+          ctx.drawImage(coloredRightArrow, 1100, 10);
+        } else if (j === 0 && subArr[i] < 30) {
+          ctx.drawImage(rightArrow, 1100, 10);
         }
+
+
+
+
+
+
+
+
+
+
+          // ctx.clearRect(10, 50, 120, 120)
+
+        // if (j === 0 && subArr[i] < 250) {
+        //   ctx.drawImage(leftArrow, 10, 100) 
+        // } else if (j === 0 && subArr[i] > 250) {
+        //   ctx.drawImage(coloredLeftArrow, 10, 50)
+        // }
+        
+        /////NOT A FUNCTION
+        // if (j === 0 && subArr[i] > 250) {
+        //   // ctx.clearRect(10, 10, 120, 120)
+        //   ctx.drawImage(coloredLeftArrow, 10, 10)
+        //   // ctx.clearImage(leftArrow)
+        //   // debugger
+        // } else {
+        //   ctx.drawImage(leftArrow, 10, 100) // 10, 10
+        // }
+
+        //// MORE NOT FUNCTIONS
+        // if (j === 1 && subArr[i] > 190) {
+        //   ctx.drawImage(coloredDownArrow, 365, 10)
+        //   ctx.clearImage(downArrow)
+        //   // debugger
+        // } else {
+        //   ctx.drawImage(downArrow, 365, 10)
+        // }
+
+        // if (j === 2 && subArr[i] > 170) {
+        //   ctx.drawImage(coloredUpArrow, 726, 10)
+        //   ctx.clearImage(upArrow)
+        // } else {
+        //   ctx.drawImage(upArrow, 726, 10)
+        // }
+
+        // if (j === 3 && subArr[i] > 50) {
+        //   ctx.drawImage(coloredRightArrow, 1100, 10)
+        //   ctx.clearImage(rightArrow)
+        // } else {
+        //   ctx.drawImage(rightArrow, 1100, 10)
+        // }
+        ///// END OF NOT FUNCTIONS
 
         // ctx.drawImage(leftArrow, 10, 10)
         // ctx.drawImage(downArrow, 365, 10)
