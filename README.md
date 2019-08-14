@@ -12,7 +12,7 @@ In Synesthesia, users will be able to
 * Upload any MP3 file of their choice
 * See the music visualization in real time
 * Start, pause, and restart the visualization
-* (Bonus) Play a rhythm-based game that is synchronized with the visualization
+* Play a rhythm-based game that is synchronized with the visualization
 
 ## Screenshots
 
