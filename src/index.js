@@ -47,11 +47,6 @@ window.onload = function () {
     let lightup3 = false;
     let lightup4 = false;
 
-    let pressed = false;
-    let pressed2 = false;
-    let pressed3 = false;
-    let pressed4 = false;
-
     let LEFT = false;
     let DOWN = false;
     let UP = false;
@@ -155,11 +150,17 @@ window.onload = function () {
           let coloredLeftArrow = new Image();
           coloredLeftArrow.src = "src/assets/colored_left_arrow.png";
 
+          let pressedLeftArrow = new Image();
+          pressedLeftArrow.src = "src/assets/pressed_left_arrow.png";
+
           let leftArrow = new Image();
           leftArrow.src = "src/assets/left_arrow.png";
 
           let coloredDownArrow = new Image();
           coloredDownArrow.src = "src/assets/colored_down_arrow.png";
+
+          let pressedDownArrow = new Image();
+          pressedDownArrow.src = "src/assets/pressed_down_arrow.png";
 
           let downArrow = new Image();
           downArrow.src = "src/assets/down_arrow.png";
@@ -167,11 +168,17 @@ window.onload = function () {
           let coloredUpArrow = new Image();
           coloredUpArrow.src = "src/assets/colored_up_arrow.png";
 
+          let pressedUpArrow = new Image();
+          pressedUpArrow.src = "src/assets/pressed_up_arrow.png";
+
           let upArrow = new Image();
           upArrow.src = "src/assets/up_arrow.png";
 
           let coloredRightArrow = new Image();
           coloredRightArrow.src = "src/assets/colored_right_arrow.png";
+
+          let pressedRightArrow = new Image();
+          pressedRightArrow.src = "src/assets/pressed_right_arrow.png";
 
           let rightArrow = new Image();
           rightArrow.src = "src/assets/right_arrow.png";
@@ -259,6 +266,7 @@ window.onload = function () {
                 } else if (LEFT && !lightup) {
                   leftPoints -= 1
                 }
+                setTimeout(() => LEFT = false, 500)
                 break;
               case 40:
                 e.preventDefault();
@@ -268,6 +276,7 @@ window.onload = function () {
                 } else if (DOWN && !lightup2) {
                   downPoints -= 1
                 }
+                setTimeout(() => DOWN = false, 500)
                 break;
               case 38:
                 e.preventDefault();
@@ -277,6 +286,7 @@ window.onload = function () {
                 } else if (UP && !lightup3) {
                   upPoints -= 1
                 }
+                setTimeout(() => UP = false, 500)
                 break;
               case 39:
                 e.preventDefault();
@@ -286,6 +296,7 @@ window.onload = function () {
                 } else if (RIGHT && !lightup4) {
                   rightPoints -= 1
                 }
+                setTimeout(() => RIGHT = false, 500)
                 break;
             }
           }
@@ -340,7 +351,14 @@ window.onload = function () {
           } 
           else if (j === 0 && !lightup) {
             ctx.drawImage(leftArrow, 10, 10); // 50
+          } 
+          
+          // in the case of a key press, successful or not
+          // is LEFT ever getting set to false?
+          if (j === 0 && LEFT) {
+            ctx.drawImage(pressedLeftArrow, 10, 10);
           }
+          //
 
           if (j === 1 && lightup2) {
             ctx.drawImage(coloredDownArrow, 365, 10); // 50
@@ -349,6 +367,11 @@ window.onload = function () {
             ctx.drawImage(downArrow, 365, 10); // 50
           }
 
+          if (j === 1 && DOWN) {
+            ctx.drawImage(pressedDownArrow, 365, 10);
+          }
+          //
+
           if (j === 2 && lightup3) {
             ctx.drawImage(coloredUpArrow, 726, 10); // 50
           }
@@ -356,11 +379,21 @@ window.onload = function () {
             ctx.drawImage(upArrow, 726, 10); // 50
           }
 
+          if (j === 2 && UP) {
+            ctx.drawImage(pressedUpArrow, 726, 10);
+          }
+
+          //
+
           if (j === 3 && lightup4) {
             ctx.drawImage(coloredRightArrow, 1100, 10); // 50
           }
           else if (j === 3 && !lightup4) {
             ctx.drawImage(rightArrow, 1100, 10); // 50
+          }
+
+          if (j === 3 && RIGHT) {
+            ctx.drawImage(pressedRightArrow, 1100, 10);
           }
 
 
