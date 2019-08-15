@@ -276,15 +276,40 @@ window.onload = function () {
             }
           }
 
-          console.log(leftPoints)
-          console.log(downPoints)
-          console.log(upPoints)
-          console.log(rightPoints)
+          // console.log(leftPoints)
+          // console.log(downPoints)
+          // console.log(upPoints)
+          // console.log(rightPoints)
 
+          ////// POINTS ARE SHOWING UP AND NEVER DISAPPEARING
+          // ctx.font = "48px serif";
+          // ctx.textBaseline = "hanging";
+          // ctx.fillText(leftPoints, 0, 200);
+          // ctx.fillStyle = "#ffffff";
+          //////////////////
 
-
+          // window.alert(leftPoints)
           // Rendering colored vs gray arrows
           // avg > 110
+
+          function fadeOut(text) {
+            var alpha = 1.0,   // full opacity
+              interval = setInterval(function () {
+                canvas.width = canvas.width; // Clears the canvas
+                ctx.fillStyle = "rgba(255, 0, 0, " + alpha + ")";
+                ctx.font = "20pt Arial";
+                ctx.fillText(text, 600, 50);
+                alpha = alpha - 0.05; // decrease opacity (fade out)
+                if (alpha < 0) {
+                  ctx.width = ctx.width;
+                  clearInterval(interval);
+                }
+              }, 50);
+          }
+
+          let allPoints = leftPoints + rightPoints + upPoints + downPoints;
+          if (!allPoints) allPoints = allPoints / 100;
+          fadeOut(allPoints);
 
 
           // if (j === 0 && lightup) {
@@ -350,6 +375,6 @@ window.onload = function () {
 
     audio.play();
     renderFrame();
-
+    renderPoints();
   }
 }
