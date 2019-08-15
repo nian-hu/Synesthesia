@@ -60,7 +60,11 @@ window.onload = function () {
     let rightPoints = 0;
 
     let pressed = null;
+
     let incorrect = true;
+    let incorrect2 = true;
+    let incorrect3 = true;
+    let incorrect4 = true;
 
     // document.addEventListener("keydown", handlePress);
 
@@ -273,7 +277,6 @@ window.onload = function () {
             // } 
 
             if (e.keyCode === 37 && lightup && incorrect) {
-              // debugger
               leftPoints += 1;
               LEFT = true;
               setTimeout(() => LEFT = false, 250)
@@ -281,48 +284,64 @@ window.onload = function () {
               incorrect = !incorrect;
             } 
 
-            // if (e.keyCode === 37 && !lightup) {
-            //   leftPoints -= 1;
-            //   LEFT = true;
-            //   setTimeout(() => LEFT = false, 250)
-            //   lightup = true;
-            // } 
-
-            // ATTEMPT TO DECREMENT POINTS
             if (e.keyCode === 37 && !lightup && incorrect) {
-              // console.log(incorrect)
-              // debugger
               leftPoints -= 1;
               LEFT = true;
               setTimeout(() => LEFT = false, 250)
               incorrect = !incorrect;
             } 
 
-            // debugger
-            // incorrect = true;
-
-
-            if (e.keyCode === 40 && lightup2) {
+            if (e.keyCode === 40 && lightup2 && incorrect2) {
               downPoints += 1;
               DOWN = true;
               setTimeout(() => DOWN = false, 250)
               lightup2 = false;
+              incorrect2 = !incorrect2;
             }
 
+            if (e.keyCode === 40 && !lightup2 && incorrect2) {
+              downPoints -= 1;
+              DOWN = true;
+              setTimeout(() => DOWN = false, 250)
+              lightup2 = false;
+              incorrect2 = !incorrect2;
+            }
+
+            /// UP
             
-            if (e.keyCode === 38 && lightup3) {
+            if (e.keyCode === 38 && lightup3 && incorrect3) {
               upPoints += 1;
               UP = true;
               setTimeout(() => UP = false, 250)
               lightup3 = false;
+              incorrect3 = !incorrect3;
             }
 
-            if (e.keyCode === 39 && lightup4) {
+            if (e.keyCode === 38 && !lightup3 && incorrect3) {
+              upPoints -= 1;
+              UP = true;
+              setTimeout(() => UP = false, 250)
+              lightup3 = false;
+              incorrect3 = !incorrect3;
+            }
+            //
+
+            if (e.keyCode === 39 && lightup4 && incorrect4) {
               rightPoints += 1;
               RIGHT = true;
               setTimeout(() => RIGHT = false, 250)
               lightup4 = false;
+              incorrect4 = !incorrect4;
             }
+
+            if (e.keyCode === 39 && !lightup4 && incorrect4) {
+              rightPoints -= 1;
+              RIGHT = true;
+              setTimeout(() => RIGHT = false, 250)
+              lightup4 = false;
+              incorrect4 = !incorrect4;
+            }
+
             // switch (e.keyCode) {
             //   case 37: 
             //     pressed = 'left';
@@ -509,6 +528,9 @@ window.onload = function () {
         }
 
         incorrect = true;
+        incorrect2 = true;
+        incorrect3 = true;
+        incorrect4 = true;
       }
 
     }
