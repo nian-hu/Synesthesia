@@ -276,6 +276,7 @@ window.onload = function () {
               lightup2 = false;
             }
 
+            
             if (e.keyCode === 38 && lightup3) {
               upPoints += 1;
               UP = true;
