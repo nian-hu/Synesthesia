@@ -60,6 +60,7 @@ window.onload = function () {
     let rightPoints = 0;
 
     let pressed = null;
+    let incorrect = null;
 
     // document.addEventListener("keydown", handlePress);
 
@@ -268,6 +269,9 @@ window.onload = function () {
               setTimeout(() => LEFT = false, 250)
               lightup = false;
             } 
+
+            
+
 
             if (e.keyCode === 40 && lightup2) {
               downPoints += 1;
