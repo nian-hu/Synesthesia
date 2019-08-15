@@ -156,7 +156,7 @@ window.onload = function () {
 
               if (count >= 4 && lightup === false) {
                 lightup = true;
-                setTimeout(() => lightup = false, 1000)
+                setTimeout(() => lightup = false, 750);
                 count = 0;
               }
             } 
@@ -171,7 +171,7 @@ window.onload = function () {
 
               if (count2 >= 4 && lightup2 === false) {
                 lightup2 = true;
-                setTimeout(() => lightup2 = false, 1000)
+                setTimeout(() => lightup2 = false, 750)
                 count2 = 0;
               }
             }
@@ -185,7 +185,7 @@ window.onload = function () {
 
               if (count3 >= 4 && lightup3 === false) {
                 lightup3 = true;
-                setTimeout(() => lightup3 = false, 1000)
+                setTimeout(() => lightup3 = false, 750)
                 count3 = 0;
               }
             }
@@ -199,7 +199,7 @@ window.onload = function () {
 
               if (count4 >= 4 && lightup4 === false) {
                 lightup4 = true;
-                setTimeout(() => lightup4 = false, 1000)
+                setTimeout(() => lightup4 = false, 750)
                 count4 = 0;
               }
             }
@@ -245,9 +245,6 @@ window.onload = function () {
           else if (j === 3 && !lightup4) {
             ctx.drawImage(rightArrow, 1100, 10); // 50
           }
-
-
-
 
 
 
