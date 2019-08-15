@@ -32,12 +32,14 @@ window.onload = function () {
 
     // analyser.fftSize = 16384;
     analyser.fftSize = 1024;
+    // analyser.fftSize = 256;
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
 
     const WIDTH = canvas.width;
     const HEIGHT = canvas.height;
-    const barWidth = (WIDTH / bufferLength) * 9; // 13, 9
+    const barWidth = (WIDTH / bufferLength) * 9; 
+    // const barWidth = (WIDTH / bufferLength) * 2; 
 
     let barHeight;
     let x = 0;
@@ -56,6 +58,8 @@ window.onload = function () {
     let downPoints = 0;
     let upPoints = 0;
     let rightPoints = 0;
+
+    let pressed = null;
 
     // document.addEventListener("keydown", handlePress);
 
@@ -254,51 +258,104 @@ window.onload = function () {
           ////// if arrow is lit, then look for key press
 
           document.addEventListener("keydown", handlePress);
+          // document.addEventListener("keyup", handlePress);
           
           function handlePress(e) {
-            switch (e.keyCode) {
-              case 37:
-                e.preventDefault();
-                LEFT = true;
-                if (LEFT && lightup) {
-                  leftPoints += 1
-                  // console.log(leftPoints)
-                } else if (LEFT && !lightup) {
-                  leftPoints -= 1
-                }
-                setTimeout(() => LEFT = false, 500)
-                break;
-              case 40:
-                e.preventDefault();
-                DOWN = true;
-                if (DOWN && lightup2) {
-                  downPoints += 1
-                } else if (DOWN && !lightup2) {
-                  downPoints -= 1
-                }
-                setTimeout(() => DOWN = false, 500)
-                break;
-              case 38:
-                e.preventDefault();
-                UP = true;
-                if (UP && lightup3) {
-                  upPoints += 1
-                } else if (UP && !lightup3) {
-                  upPoints -= 1
-                }
-                setTimeout(() => UP = false, 500)
-                break;
-              case 39:
-                e.preventDefault();
-                RIGHT = true;
-                if (RIGHT && lightup4) {
-                  rightPoints += 1
-                } else if (RIGHT && !lightup4) {
-                  rightPoints -= 1
-                }
-                setTimeout(() => RIGHT = false, 500)
-                break;
+            e.preventDefault();
+            if (e.keyCode === 37 && lightup) {
+              leftPoints += 1;
+              LEFT = true;
+              setTimeout(() => LEFT = false, 250)
+              lightup = false;
+            } 
+
+            if (e.keyCode === 40 && lightup2) {
+              downPoints += 1;
+              DOWN = true;
+              setTimeout(() => DOWN = false, 250)
+              lightup2 = false;
             }
+
+            if (e.keyCode === 38 && lightup3) {
+              upPoints += 1;
+              UP = true;
+              setTimeout(() => UP = false, 250)
+              lightup3 = false;
+            }
+
+            if (e.keyCode === 39 && lightup4) {
+              rightPoints += 1;
+              RIGHT = true;
+              setTimeout(() => RIGHT = false, 250)
+              lightup4 = false;
+            }
+            // switch (e.keyCode) {
+            //   case 37: 
+            //     pressed = 'left';
+            //     break;
+            //   case 40:
+            //     pressed = 'down';
+            //     break;
+            //   case 38:
+            //     pressed = 'up';
+            //     break;
+            //   case 39: 
+            //     pressed = 'right';
+            //     break;
+            // }
+
+            // switch (pressed) {
+            //   case 'left':
+            //     pressed = null;
+            //     LEFT = true;
+            //     if (LEFT && lightup) {
+            //       // setTimeout(() => leftPoints += 1, 500)
+            //       leftPoints += 1;
+            //       // LEFT = false;
+            //       // e.keyCode = null;
+            //       // debugger
+            //       // LEFT = false;
+            //       // console.log(leftPoints)
+            //       // break;
+            //     } else if (LEFT && !lightup) {
+            //       // setTimeout(() => leftPoints -= 1, 500)
+            //       leftPoints -= 1;
+            //       // LEFT = false;
+            //       // break;
+            //     }
+            //     setTimeout(() => LEFT = false, 500)
+            //     break;
+            //   case 'down':
+            //     pressed = null;
+            //     DOWN = true;
+            //     if (DOWN && lightup2) {
+            //       downPoints += 1
+            //     } else if (DOWN && !lightup2) {
+            //       downPoints -= 1
+            //     }
+            //     setTimeout(() => DOWN = false, 500)
+            //     break;
+            //   case 'up':
+            //     pressed = null;
+            //     UP = true;
+            //     if (UP && lightup3) {
+            //       upPoints += 1
+            //     } else if (UP && !lightup3) {
+            //       upPoints -= 1
+            //     }
+            //     setTimeout(() => UP = false, 500)
+            //     break;
+            //   case 'right':
+            //     pressed = null;
+            //     RIGHT = true;
+            //     if (RIGHT && lightup4) {
+            //       rightPoints += 1
+            //     } else if (RIGHT && !lightup4) {
+            //       rightPoints -= 1
+            //     }
+            //     setTimeout(() => RIGHT = false, 500)
+            //     break;
+            // }
           }
 
           // console.log(leftPoints)
@@ -333,7 +390,7 @@ window.onload = function () {
           }
 
           let allPoints = leftPoints + rightPoints + upPoints + downPoints;
-          if (!allPoints) allPoints = allPoints / 10000;
+          // if (!allPoints) allPoints = allPoints / 10000;
           fadeOut(allPoints);
 
 
