@@ -60,7 +60,7 @@ window.onload = function () {
     let rightPoints = 0;
 
     let pressed = null;
-    let incorrect = null;
+    let incorrect = true;
 
     // document.addEventListener("keydown", handlePress);
 
@@ -263,14 +263,43 @@ window.onload = function () {
           
           function handlePress(e) {
             e.preventDefault();
-            if (e.keyCode === 37 && lightup) {
+            // if (e.keyCode === 37 && lightup && incorrect) {
+            //   debugger
+            //   leftPoints += 1;
+            //   LEFT = true;
+            //   setTimeout(() => LEFT = false, 250)
+            //   // lightup = false;
+            //   incorrect = !incorrect;
+            // } 
+
+            if (e.keyCode === 37 && lightup && incorrect) {
+              // debugger
               leftPoints += 1;
               LEFT = true;
               setTimeout(() => LEFT = false, 250)
               lightup = false;
+              incorrect = !incorrect;
             } 
 
-            
+            // if (e.keyCode === 37 && !lightup) {
+            //   leftPoints -= 1;
+            //   LEFT = true;
+            //   setTimeout(() => LEFT = false, 250)
+            //   lightup = true;
+            // } 
+
+            // ATTEMPT TO DECREMENT POINTS
+            if (e.keyCode === 37 && !lightup && incorrect) {
+              // console.log(incorrect)
+              // debugger
+              leftPoints -= 1;
+              LEFT = true;
+              setTimeout(() => LEFT = false, 250)
+              incorrect = !incorrect;
+            } 
+
+            // debugger
+            // incorrect = true;
 
 
             if (e.keyCode === 40 && lightup2) {
@@ -478,6 +507,8 @@ window.onload = function () {
           //   ctx.drawImage(rightArrow, 1100, 10);
           // }
         }
+
+        incorrect = true;
       }
 
     }
