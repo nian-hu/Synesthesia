@@ -47,6 +47,40 @@ window.onload = function () {
     let lightup3 = false;
     let lightup4 = false;
 
+    let LEFT = false;
+    let DOWN = false;
+    let UP = false;
+    let RIGHT = false;
+
+    let leftPoints = 0;
+    let downPoints = 0;
+    let upPoints = 0;
+    let rightPoints = 0;
+
+    // document.addEventListener("keydown", handlePress);
+
+    // 37 left, 38 up, 39 right, 40 down
+    // function handlePress(e) {
+    //   switch (e.keyCode) {
+    //     case 37:
+    //       e.preventDefault();
+    //       console.log('left');
+    //       break;
+    //     case 40:
+    //       e.preventDefault();
+    //       console.log('down');
+    //       break;
+    //     case 38:
+    //       e.preventDefault();
+    //       console.log('up');
+    //       break;
+    //     case 39:
+    //       e.preventDefault();
+    //       console.log('right');
+    //       break;
+    //   }
+    // }
+
     function renderFrame() {
       requestAnimationFrame(renderFrame);
       x = 0;
@@ -205,6 +239,50 @@ window.onload = function () {
             }
           }
 
+          ////// if arrow is lit, then look for key press
+
+          document.addEventListener("keydown", handlePress);
+          
+          function handlePress(e) {
+            switch (e.keyCode) {
+              case 37:
+                e.preventDefault();
+                LEFT = true;
+                if (LEFT && lightup) {
+                  leftPoints += 1
+                } 
+                break;
+              case 40:
+                e.preventDefault();
+                DOWN = true;
+                if (DOWN && lightup2) {
+                  downPoints += 1
+                }
+                break;
+              case 38:
+                e.preventDefault();
+                UP = true;
+                if (UP && lightup3) {
+                  upPoints += 1
+                }
+                break;
+              case 39:
+                e.preventDefault();
+                RIGHT = true;
+                if (RIGHT && lightup4) {
+                  rightPoints += 1;
+                }
+                break;
+            }
+          }
+
+          console.log(leftPoints)
+          console.log(downPoints)
+          console.log(upPoints)
+          console.log(rightPoints)
+
+
+
           // Rendering colored vs gray arrows
           // avg > 110
 
@@ -272,5 +350,6 @@ window.onload = function () {
 
     audio.play();
     renderFrame();
+
   }
 }
