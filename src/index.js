@@ -47,6 +47,11 @@ window.onload = function () {
     let lightup3 = false;
     let lightup4 = false;
 
+    let pressed = false;
+    let pressed2 = false;
+    let pressed3 = false;
+    let pressed4 = false;
+
     let LEFT = false;
     let DOWN = false;
     let UP = false;
@@ -250,13 +255,18 @@ window.onload = function () {
                 LEFT = true;
                 if (LEFT && lightup) {
                   leftPoints += 1
-                } 
+                  // console.log(leftPoints)
+                } else if (LEFT && !lightup) {
+                  leftPoints -= 1
+                }
                 break;
               case 40:
                 e.preventDefault();
                 DOWN = true;
                 if (DOWN && lightup2) {
                   downPoints += 1
+                } else if (DOWN && !lightup2) {
+                  downPoints -= 1
                 }
                 break;
               case 38:
@@ -264,13 +274,17 @@ window.onload = function () {
                 UP = true;
                 if (UP && lightup3) {
                   upPoints += 1
+                } else if (UP && !lightup3) {
+                  upPoints -= 1
                 }
                 break;
               case 39:
                 e.preventDefault();
                 RIGHT = true;
                 if (RIGHT && lightup4) {
-                  rightPoints += 1;
+                  rightPoints += 1
+                } else if (RIGHT && !lightup4) {
+                  rightPoints -= 1
                 }
                 break;
             }
@@ -308,7 +322,7 @@ window.onload = function () {
           }
 
           let allPoints = leftPoints + rightPoints + upPoints + downPoints;
-          if (!allPoints) allPoints = allPoints / 100;
+          if (!allPoints) allPoints = allPoints / 10000;
           fadeOut(allPoints);
 
 
@@ -375,6 +389,5 @@ window.onload = function () {
 
     audio.play();
     renderFrame();
-    renderPoints();
   }
 }
