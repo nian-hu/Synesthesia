@@ -42,6 +42,11 @@ window.onload = function () {
     let barHeight;
     let x = 0;
 
+    let lightup = false;
+    let lightup2 = false;
+    let lightup3 = false;
+    let lightup4 = false;
+
     function renderFrame() {
       requestAnimationFrame(renderFrame);
       x = 0;
@@ -142,54 +147,59 @@ window.onload = function () {
 
           // Counting 4 bars
 
-          let lightup = false;
+          //newArr[0][i]
+          // let lightup = false;
           let count = 0;
-          for (let i = 0; i < subArr.length; i++) {
-            if (subArr[i] > 250) {
+          for (let i = 0; i < newArr[0].length; i++) {
+            if (newArr[0][i] > 250) {
               count += 1;
 
-              if (count >= 4) {
+              if (count >= 4 && lightup === false) {
                 lightup = true;
+                setTimeout(() => lightup = false, 1000)
                 count = 0;
               }
             } 
           }
           //
 
-          let lightup2 = false;
+          // let lightup2 = false;
           let count2 = 0;
-          for (let i = 0; i < subArr.length; i++) {
-            if (subArr[i] > 190) {
+          for (let i = 0; i < newArr[1].length; i++) {
+            if (newArr[1][i] > 190) {
               count2 += 1;
 
-              if (count2 >= 4) {
+              if (count2 >= 4 && lightup2 === false) {
                 lightup2 = true;
+                setTimeout(() => lightup2 = false, 1000)
                 count2 = 0;
               }
             }
           }
           //
-          let lightup3 = false;
+          // let lightup3 = false;
           let count3 = 0;
-          for (let i = 0; i < subArr.length; i++) {
-            if (subArr[i] > 170) {
+          for (let i = 0; i < newArr[2].length; i++) {
+            if (newArr[2][i] > 170) {
               count3 += 1;
 
-              if (count3 >= 4) {
+              if (count3 >= 4 && lightup3 === false) {
                 lightup3 = true;
+                setTimeout(() => lightup3 = false, 1000)
                 count3 = 0;
               }
             }
           }
           //
-          let lightup4 = false;
+          // let lightup4 = false;
           let count4 = 0;
-          for (let i = 0; i < subArr.length; i++) {
-            if (subArr[i] > 50) {
+          for (let i = 0; i < newArr[3].length; i++) {
+            if (newArr[3][i] > 50) {
               count4 += 1;
 
-              if (count4 >= 4) {
+              if (count4 >= 4 && lightup4 === false) {
                 lightup4 = true;
+                setTimeout(() => lightup4 = false, 1000)
                 count4 = 0;
               }
             }
@@ -197,6 +207,17 @@ window.onload = function () {
 
           // Rendering colored vs gray arrows
           // avg > 110
+
+
+          // if (j === 0 && lightup) {
+          //   ctx.drawImage(coloredLeftArrow, 10, 10); // 50
+          //   // setTimeout(() => ctx.drawImage(leftArrow, 10, 10), 3000)
+          //   // setTimeout(() => ctx.clearRect(10, 10, 120, 120), 3000)
+          // } 
+          // else if (j === 0 && !lightup) {
+          //   ctx.drawImage(leftArrow, 10, 10); // 50
+          // }
+
           if (j === 0 && lightup) {
             ctx.drawImage(coloredLeftArrow, 10, 10); // 50
           } 
@@ -224,6 +245,11 @@ window.onload = function () {
           else if (j === 3 && !lightup4) {
             ctx.drawImage(rightArrow, 1100, 10); // 50
           }
+
+
+
+
+
 
           // if (j === 1 && subArr[i] > 190) {
           //   ctx.drawImage(coloredDownArrow, 365, 10);
