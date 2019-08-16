@@ -23,6 +23,15 @@ body {
   z-index: 3;
 }
 
+button {
+  background: black;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 #demo {
   position: fixed;
   top: 10px;

@@ -13,7 +13,9 @@
 <body>
   <canvas id="canvas_bottom"></canvas>
   <canvas id="canvas"></canvas>
-  <input type="file" id="file-input" accept="audio/*,video/*,image/*">
+  <label class="custom-file-upload">
+    <input type="file" id="file-input" accept="audio/*,video/*,image/*">
+  </label>
 
   <audio id="audio" controls></audio>
   <div id="background"></div>
@@ -28,7 +30,7 @@
   <div class="modal" id="instructions">
     <div class="modal-content">
       <span id="close-instructions">&times;</span>
-      <img id="instructions-image" src="src/assets/Synesthesia_Directions.png"/>
+      <img id="instructions-image" src="src/assets/Synesthesia_Instructions.png"/>
     </div>
   </div>
 
