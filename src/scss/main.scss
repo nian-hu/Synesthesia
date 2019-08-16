@@ -26,15 +26,20 @@ body {
 #demo {
   position: fixed;
   top: 10px;
-  left: 300px;
+  left: 100px;
   z-index: 3;
 }
 
 #open-instructions {
   position: fixed;
   top: 10px;
-  left: 100px;
+  left: 190px;
   z-index: 3;
+}
+
+#instructions-image {
+  width: 100%;
+  height: 100%;
 }
 
 .modal {
@@ -51,7 +56,8 @@ body {
 
 .modal-content {
   background-color: black;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 0 auto;
+  margin-top: 3%;
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
@@ -65,7 +71,7 @@ body {
 
 /* The Close Button */
 #close-instructions {
-  color: red;
+  color: rgb(255, 0, 140);
   float: right;
   font-size: 28px;
   font-weight: bold;
