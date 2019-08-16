@@ -6,11 +6,14 @@ window.onload = function () {
   const canvas_bottom = document.getElementById("canvas_bottom");
   const audio = document.getElementById("audio");
   const instructions = document.getElementById("instructions");
-  const modalButton = document.getElementById("open-instructions");
+  const instructionsButton = document.getElementById("open-instructions");
   const closeInstructions = document.getElementById("close-instructions");
   const demo = document.getElementById("demo");
+  const contact = document.getElementById("contact");
+  const contactButton = document.getElementById("open-contact");
+  const closeContact = document.getElementById("close-contact");
 
-  modalButton.onclick = function() {
+  instructionsButton.onclick = function() {
     instructions.style.display = "block";
   }
 
@@ -21,7 +24,19 @@ window.onload = function () {
   window.onclick = function(event) {
     if (event.target === instructions) {
       instructions.style.display = "none";
+    } 
+
+    if (event.target === contact) {
+      contact.style.display = "none";
     }
+  }
+
+  contactButton.onclick = function() {
+    contact.style.display = "block";
+  }
+
+  closeContact.onclick = function() {
+    contact.style.display = "none";
   }
 
   demo.onclick = function() {
@@ -470,7 +485,7 @@ window.onload = function () {
             var alpha = 1.0,   // full opacity
               interval = setInterval(function () {
                 canvas.width = canvas.width; // Clears the canvas
-                ctx.fillStyle = "rgba(255, 0, 0, " + alpha + ")";
+                ctx.fillStyle = "rgba(255, 0, 140, " + alpha + ")";
                 ctx.font = "bold 25pt Arial";
                 ctx.fillText(text, 600, 50);
                 alpha = alpha - 0.05; // decrease opacity (fade out)
