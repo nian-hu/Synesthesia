@@ -5,11 +5,38 @@ window.onload = function () {
   const canvas = document.getElementById("canvas");
   const canvas_bottom = document.getElementById("canvas_bottom");
   const audio = document.getElementById("audio");
+  const instructions = document.getElementById("instructions");
+  const modalButton = document.getElementById("open-instructions");
+  const closeInstructions = document.getElementById("close-instructions");
+  const demo = document.getElementById("demo");
+
+  modalButton.onclick = function() {
+    instructions.style.display = "block";
+  }
+
+  closeInstructions.onclick = function() {
+    instructions.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target === instructions) {
+      instructions.style.display = "none";
+    }
+  }
+
+  demo.onclick = function() {
+    audio.src = "src/assets/Cyberpunk.mp3";
+    play();
+  }
 
   file.onchange = function () {
 
     const files = this.files;
     audio.src = URL.createObjectURL(files[0]); 
+    play();
+  }
+
+  function play() {
 
     // canvas initialization
     canvas.width = window.innerWidth;

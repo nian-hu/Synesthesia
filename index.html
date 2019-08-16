@@ -14,6 +14,7 @@
   <canvas id="canvas_bottom"></canvas>
   <canvas id="canvas"></canvas>
   <input type="file" id="file-input" accept="audio/*,video/*,image/*">
+
   <audio id="audio" controls></audio>
   <div id="background"></div>
   <div class="arrows">
@@ -22,6 +23,16 @@
     <img id="up-arrow" src="./src/assets/up_arrow.png">
     <img id="right-arrow" src="./src/assets/right_arrow.png">
   </div>
+
+  <button id="open-instructions">Instructions</button>
+  <div class="modal" id="instructions">
+    <div class="modal-content">
+      <span id="close-instructions">&times;</span>
+      <p>Welcome to my modal!</p>
+    </div>
+  </div>
+
+  <button id="demo">Demo Song</button>
 
   <!-- <div>
     <img id="colored-left-arrow" src="./src/assets/colored_left_arrow.png">
