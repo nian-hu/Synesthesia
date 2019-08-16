@@ -75,10 +75,30 @@ body {
   width: 80%; /* Could be more or less, depending on screen size */
 }
 
-.modal-content p {
+.modal-content a {
   color: white;
   font-family: verdana;
   font-size: 18px;
+  z-index: 11;
+  padding: 8%;
+}
+
+.linkedin {
+  position: absolute;
+  left: 18%;
+  top: 30%;
+}
+
+.github {
+  position: absolute;
+  left: 42%;
+  top: 30%;
+}
+
+.instagram {
+  position: absolute;
+  top: 31%;
+  left: 64%;
 }
 
 #close-instructions {
