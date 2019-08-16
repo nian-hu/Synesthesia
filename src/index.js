@@ -444,7 +444,7 @@ window.onload = function () {
               interval = setInterval(function () {
                 canvas.width = canvas.width; // Clears the canvas
                 ctx.fillStyle = "rgba(255, 0, 0, " + alpha + ")";
-                ctx.font = "20pt Arial";
+                ctx.font = "bold 25pt Arial";
                 ctx.fillText(text, 600, 50);
                 alpha = alpha - 0.05; // decrease opacity (fade out)
                 if (alpha < 0) {
