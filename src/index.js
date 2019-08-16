@@ -532,7 +532,6 @@ window.onload = function () {
         incorrect3 = true;
         incorrect4 = true;
       }
-
     }
 
     audio.play();
