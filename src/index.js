@@ -162,6 +162,9 @@ window.onload = function () {
           let pressedLeftArrow = new Image();
           pressedLeftArrow.src = "src/assets/pressed_left_arrow.png";
 
+          let incorrectLeftArrow = new Image();
+          incorrectLeftArrow.src = "src/assets/incorrect_left_arrow.png"
+
           let leftArrow = new Image();
           leftArrow.src = "src/assets/left_arrow.png";
 
@@ -170,6 +173,9 @@ window.onload = function () {
 
           let pressedDownArrow = new Image();
           pressedDownArrow.src = "src/assets/pressed_down_arrow.png";
+
+          let incorrectDownArrow = new Image();
+          incorrectDownArrow.src = "src/assets/incorrect_down_arrow.png"
 
           let downArrow = new Image();
           downArrow.src = "src/assets/down_arrow.png";
@@ -180,6 +186,9 @@ window.onload = function () {
           let pressedUpArrow = new Image();
           pressedUpArrow.src = "src/assets/pressed_up_arrow.png";
 
+          let incorrectUpArrow = new Image();
+          incorrectUpArrow.src = "src/assets/incorrect_up_arrow.png"
+
           let upArrow = new Image();
           upArrow.src = "src/assets/up_arrow.png";
 
@@ -188,6 +197,9 @@ window.onload = function () {
 
           let pressedRightArrow = new Image();
           pressedRightArrow.src = "src/assets/pressed_right_arrow.png";
+
+          let incorrectRightArrow = new Image();
+          incorrectRightArrow.src = "src/assets/incorrect_right_arrow.png"
 
           let rightArrow = new Image();
           rightArrow.src = "src/assets/right_arrow.png";
@@ -465,10 +477,16 @@ window.onload = function () {
           
           // in the case of a key press, successful or not
           // is LEFT ever getting set to false?
-          if (j === 0 && LEFT) {
+          if (j === 0 && LEFT && lightup) {
             ctx.drawImage(pressedLeftArrow, 10, 10);
           }
           //
+
+          if (j === 0 && LEFT && !lightup) {
+            ctx.drawImage(incorrectLeftArrow, 10, 10)
+          }
+
+          ///
 
           if (j === 1 && lightup2) {
             ctx.drawImage(coloredDownArrow, 365, 10); // 50
@@ -477,8 +495,12 @@ window.onload = function () {
             ctx.drawImage(downArrow, 365, 10); // 50
           }
 
-          if (j === 1 && DOWN) {
+          if (j === 1 && DOWN && lightup2) {
             ctx.drawImage(pressedDownArrow, 365, 10);
+          }
+
+          if (j === 1 && DOWN && !lightup2) {
+            ctx.drawImage(incorrectDownArrow, 365, 10);
           }
           //
 
@@ -489,8 +511,12 @@ window.onload = function () {
             ctx.drawImage(upArrow, 726, 10); // 50
           }
 
-          if (j === 2 && UP) {
+          if (j === 2 && UP && lightup3) {
             ctx.drawImage(pressedUpArrow, 726, 10);
+          }
+
+          if (j === 2 && UP && !lightup3) {
+            ctx.drawImage(incorrectUpArrow, 726, 10);
           }
 
           //
@@ -502,8 +528,12 @@ window.onload = function () {
             ctx.drawImage(rightArrow, 1100, 10); // 50
           }
 
-          if (j === 3 && RIGHT) {
+          if (j === 3 && RIGHT && lightup4) {
             ctx.drawImage(pressedRightArrow, 1100, 10);
+          }
+
+          if (j === 3 && RIGHT && !lightup4) {
+            ctx.drawImage(incorrectRightArrow, 1100, 10);
           }
 
 
