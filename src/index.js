@@ -482,7 +482,7 @@ window.onload = function () {
           // avg > 110
 
           function fadeOut(text) {
-            var alpha = 1.0,   // full opacity
+            let alpha = 1.0,   // full opacity
               interval = setInterval(function () {
                 canvas.width = canvas.width; // Clears the canvas
                 ctx.fillStyle = "rgba(255, 0, 140, " + alpha + ")";
@@ -597,6 +597,25 @@ window.onload = function () {
           // } else if (j === 0 && subArr[i] < 30) {
           //   ctx.drawImage(rightArrow, 1100, 10);
           // }
+
+          function currentScore(text) {
+            let alpha = 1.0,   // full opacity
+              interval = setInterval(function () {
+                canvas.width = canvas.width; // Clears the canvas
+                ctx.fillStyle = "rgba(255, 0, 140, " + alpha + ")";
+                ctx.font = "bold 50pt Arial";
+                ctx.fillText(text, 450, 300);
+                alpha = alpha - 0.05; // decrease opacity (fade out)
+                if (alpha < 0) {
+                  ctx.width = ctx.width;
+                  clearInterval(interval);
+                }
+              }, 50);
+          }
+
+          if (audio.paused) {
+            currentScore("SCORE: " + allPoints);
+          }
         }
 
         incorrect = true;
