@@ -65,17 +65,21 @@ window.onload = function () {
     const ctx_bottom = canvas_bottom.getContext("2d");
     //
 
+    // Create new audio context
     const context = new AudioContext();
+    // Give the audio context an audio source
     let src = context.createMediaElementSource(audio);
+    // Create analyzer for audio context
     const analyser = context.createAnalyser();
-
+    // Connect the audio source to the analyzer
     src.connect(analyser);
+    // Send sound to speakers
     analyser.connect(context.destination);
-
-    // analyser.fftSize = 16384;
+    // Use Fast Fourier Transform algorithm to get frequency domain information
     analyser.fftSize = 1024;
-    // analyser.fftSize = 256;
+    // Calculates the number of data values available for the visualization
     const bufferLength = analyser.frequencyBinCount;
+    // Creates an array with length of bufferLength where all values are 0
     const dataArray = new Uint8Array(bufferLength);
 
     const WIDTH = canvas.width;
@@ -135,7 +139,8 @@ window.onload = function () {
     function renderFrame() {
       requestAnimationFrame(renderFrame);
       x = 0;
-
+      
+      // Fills the array with frequency information instead of zeros
       analyser.getByteFrequencyData(dataArray); // frequencies
 
       ctx_bottom.fillStyle = "rgba(0,0,0,0.2)";
