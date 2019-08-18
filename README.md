@@ -2,9 +2,6 @@
 ### [Play Game](https://nian-hu.github.io/Synesthesia/)
 
 ![](src/assets/synesthesia_definition.png)
-```
-“For some people, there are magenta Tuesdays, tastes that have shapes and wavy green symphonies.” - David Eagleman, Incognito: The Secret Lives of the Brain
-```
 
 ## Background and Overview
 
