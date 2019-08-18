@@ -1,6 +1,12 @@
 # Synesthesia
-
 ### [Play Game](https://nian-hu.github.io/Synesthesia/)
+
+![](src/assets/synesthesia_definition.png)
+```
+“For some people, there are magenta Tuesdays, tastes that have shapes and wavy green symphonies.” - David Eagleman, Incognito: The Secret Lives of the Brain
+```
+
+## Background and Overview
 
 Synesthesia is a DDR-inspired music-adapting game where users can upload their own music to generate a customized game. The speed and difficulty of each game is determined by the specific song that is uploaded. The game also comes pre-loaded with a demo song, "Cyberpunk" by SYN.
 
