@@ -17,6 +17,8 @@ window.onload = function () {
     instructions.style.display = "block";
   }
 
+  instructionsButton.click();
+
   closeInstructions.onclick = function() {
     instructions.style.display = "none";
   }
