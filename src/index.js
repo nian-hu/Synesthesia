@@ -1,7 +1,7 @@
 import './scss/main.scss'
 
 window.onload = function () {
-  const file = document.getElementById("file-input");
+  const file = document.getElementById("file");
   const canvas = document.getElementById("canvas");
   const canvas_bottom = document.getElementById("canvas_bottom");
   const audio = document.getElementById("audio");
@@ -113,30 +113,6 @@ window.onload = function () {
     let incorrect2 = true;
     let incorrect3 = true;
     let incorrect4 = true;
-
-    // document.addEventListener("keydown", handlePress);
-
-    // 37 left, 38 up, 39 right, 40 down
-    // function handlePress(e) {
-    //   switch (e.keyCode) {
-    //     case 37:
-    //       e.preventDefault();
-    //       console.log('left');
-    //       break;
-    //     case 40:
-    //       e.preventDefault();
-    //       console.log('down');
-    //       break;
-    //     case 38:
-    //       e.preventDefault();
-    //       console.log('up');
-    //       break;
-    //     case 39:
-    //       e.preventDefault();
-    //       console.log('right');
-    //       break;
-    //   }
-    // }
 
     function renderFrame() {
       requestAnimationFrame(renderFrame);
@@ -261,10 +237,6 @@ window.onload = function () {
           }
           avg = sum / subArr.length;
 
-          // Counting 4 bars
-
-          //newArr[0][i]
-          // let lightup = false;
           let count = 0;
           for (let i = 0; i < newArr[0].length; i++) {
             if (newArr[0][i] > 250) {
@@ -402,91 +374,7 @@ window.onload = function () {
               lightup4 = false;
               incorrect4 = !incorrect4;
             }
-
-            // switch (e.keyCode) {
-            //   case 37: 
-            //     pressed = 'left';
-            //     break;
-            //   case 40:
-            //     pressed = 'down';
-            //     break;
-            //   case 38:
-            //     pressed = 'up';
-            //     break;
-            //   case 39: 
-            //     pressed = 'right';
-            //     break;
-            // }
-
-            // switch (pressed) {
-            //   case 'left':
-            //     pressed = null;
-            //     LEFT = true;
-            //     if (LEFT && lightup) {
-            //       // setTimeout(() => leftPoints += 1, 500)
-            //       leftPoints += 1;
-            //       // LEFT = false;
-            //       // e.keyCode = null;
-            //       // debugger
-            //       // LEFT = false;
-            //       // console.log(leftPoints)
-            //       // break;
-            //     } else if (LEFT && !lightup) {
-            //       // setTimeout(() => leftPoints -= 1, 500)
-            //       leftPoints -= 1;
-            //       // LEFT = false;
-            //       // break;
-            //     }
-            //     setTimeout(() => LEFT = false, 500)
-            //     break;
-            //   case 'down':
-            //     pressed = null;
-            //     DOWN = true;
-            //     if (DOWN && lightup2) {
-            //       downPoints += 1
-            //     } else if (DOWN && !lightup2) {
-            //       downPoints -= 1
-            //     }
-            //     setTimeout(() => DOWN = false, 500)
-            //     break;
-            //   case 'up':
-            //     pressed = null;
-            //     UP = true;
-            //     if (UP && lightup3) {
-            //       upPoints += 1
-            //     } else if (UP && !lightup3) {
-            //       upPoints -= 1
-            //     }
-            //     setTimeout(() => UP = false, 500)
-            //     break;
-            //   case 'right':
-            //     pressed = null;
-            //     RIGHT = true;
-            //     if (RIGHT && lightup4) {
-            //       rightPoints += 1
-            //     } else if (RIGHT && !lightup4) {
-            //       rightPoints -= 1
-            //     }
-            //     setTimeout(() => RIGHT = false, 500)
-            //     break;
-            // }
           }
-
-          // console.log(leftPoints)
-          // console.log(downPoints)
-          // console.log(upPoints)
-          // console.log(rightPoints)
-
-          ////// POINTS ARE SHOWING UP AND NEVER DISAPPEARING
-          // ctx.font = "48px serif";
-          // ctx.textBaseline = "hanging";
-          // ctx.fillText(leftPoints, 0, 200);
-          // ctx.fillStyle = "#ffffff";
-          //////////////////
-
-          // window.alert(leftPoints)
-          // Rendering colored vs gray arrows
-          // avg > 110
 
           function fadeOut(text) {
             let alpha = 1.0,   // full opacity
@@ -504,18 +392,7 @@ window.onload = function () {
           }
 
           let allPoints = leftPoints + rightPoints + upPoints + downPoints;
-          // if (!allPoints) allPoints = allPoints / 10000;
           fadeOut(allPoints);
-
-
-          // if (j === 0 && lightup) {
-          //   ctx.drawImage(coloredLeftArrow, 10, 10); // 50
-          //   // setTimeout(() => ctx.drawImage(leftArrow, 10, 10), 3000)
-          //   // setTimeout(() => ctx.clearRect(10, 10, 120, 120), 3000)
-          // } 
-          // else if (j === 0 && !lightup) {
-          //   ctx.drawImage(leftArrow, 10, 10); // 50
-          // }
 
           if (j === 0 && lightup) {
             ctx.drawImage(coloredLeftArrow, 10, 10); // 50
@@ -524,8 +401,6 @@ window.onload = function () {
             ctx.drawImage(leftArrow, 10, 10); // 50
           } 
           
-          // in the case of a key press, successful or not
-          // is LEFT ever getting set to false?
           if (j === 0 && LEFT && lightup) {
             ctx.drawImage(pressedLeftArrow, 10, 10);
           }
@@ -534,8 +409,6 @@ window.onload = function () {
           if (j === 0 && LEFT && !lightup) {
             ctx.drawImage(incorrectLeftArrow, 10, 10)
           }
-
-          ///
 
           if (j === 1 && lightup2) {
             ctx.drawImage(coloredDownArrow, 365, 10); // 50
@@ -584,26 +457,6 @@ window.onload = function () {
           if (j === 3 && RIGHT && !lightup4) {
             ctx.drawImage(incorrectRightArrow, 1100, 10);
           }
-
-
-
-          // if (j === 1 && subArr[i] > 190) {
-          //   ctx.drawImage(coloredDownArrow, 365, 10);
-          // } else if (j === 0 && subArr[i] < 150) {
-          //   ctx.drawImage(downArrow, 365, 10); 
-          // }
-
-          // if (j === 2 && subArr[i] > 170) {
-          //   ctx.drawImage(coloredUpArrow, 726, 10);
-          // } else if (j === 0 && subArr[i] < 130) {
-          //   ctx.drawImage(upArrow, 726, 10);
-          // }
-
-          // if (j === 3 && subArr[i] > 50) {
-          //   ctx.drawImage(coloredRightArrow, 1100, 10);
-          // } else if (j === 0 && subArr[i] < 30) {
-          //   ctx.drawImage(rightArrow, 1100, 10);
-          // }
 
           function currentScore(text) {
             let alpha = 1.0,   // full opacity

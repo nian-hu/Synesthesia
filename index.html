@@ -14,9 +14,10 @@
 <body>
   <canvas id="canvas_bottom"></canvas>
   <canvas id="canvas"></canvas>
-  <label class="custom-file-upload">
-    <input type="file" id="file-input" accept="audio/*,video/*,image/*">
-  </label>
+  <!-- <input type="file" id="file-input" accept="audio/*,video/*,image/*"> -->
+
+  <input type="file" name="file" id="file" class="inputfile" />
+  <label class="input-label" for="file">Choose a file</label>
 
   <audio id="audio" controls></audio>
   <div id="background"></div>
