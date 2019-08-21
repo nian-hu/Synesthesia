@@ -2,6 +2,7 @@ import LeftArrow from './left_arrow';
 import DownArrow from './down_arrow';
 import UpArrow from './up_arrow';
 import RightArrow from './right_arrow';
+import Visualizer from './visualizer';
 
 class Game {
   constructor() {
@@ -39,6 +40,10 @@ class Game {
     const WIDTH = this.canvas.width;
     const HEIGHT = this.canvas.height;
     const barWidth = (WIDTH / bufferLength) * 9; 
+
+    const visualizer = new Visualizer(analyser, dataArray, ctx)
+    audio.play();
+    visualizer.renderFrame();
   }
 }
 
