@@ -13,20 +13,20 @@ class Intro {
     this.instructionsButton = document.getElementById("open-instructions");
     this.instructions = document.getElementById("instructions");
     this.closeInstructions = document.getElementById("close-instructions");
-    const contact = document.getElementById("contact");
+    this.contact = document.getElementById("contact");
     this.contactButton = document.getElementById("open-contact");
     this.closeContact = document.getElementById("close-contact");
 
-    this.closeInstructions.onclick = function () {
-      instructions.style.display = "none";
+    this.closeInstructions.onclick = () => {
+      this.instructions.style.display = "none";
     }
 
-    this.contactButton.onclick = function () {
-      contact.style.display = "block";
+    this.contactButton.onclick = () => {
+      this.contact.style.display = "block";
     }
 
-    this.closeContact.onclick = function () {
-      contact.style.display = "none";
+    this.closeContact.onclick = () => {
+      this.contact.style.display = "none";
     }
 
     window.onclick = function (event) {
@@ -41,12 +41,12 @@ class Intro {
   }
 
   loadInstructions() {
-    const instructions = this.instructions;
+    // const instructions = this.instructions;
     // debugger
-    this.instructionsButton.onclick = function () {
+    this.instructionsButton.onclick = () => {
       // debugger
       // this.instructions.style.display = "block";
-      instructions.style.display = "block";
+      this.instructions.style.display = "block";
     }
     this.instructionsButton.click();
   }
