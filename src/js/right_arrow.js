@@ -1,5 +1,6 @@
 class RightArrow {
   constructor(ctx) {
+    // this.pos = [1100, 10];
     this.pos = [1100, 10];
     this.ctx = ctx;
 

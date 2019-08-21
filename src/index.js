@@ -38,6 +38,8 @@ class Intro {
         this.contact.style.display = "none";
       }
     }
+
+    // this.document.addEventListener("keydown", this.handlePress);
   }
 
   loadInstructions() {

@@ -5,18 +5,22 @@ class Game {
     this.canvas = document.getElementById("canvas");
     this.demo = document.getElementById("demo");
     this.file = document.getElementById("file");
-    this.audio = document.getElementById("audio");
+    const audio = document.getElementById("audio");
+    this.handleChange = this.handleChange.bind(this);
 
     demo.onclick = () => {
-      this.audio.src = "src/assets/Cyberpunk.mp3";
+      audio.src = "src/assets/Cyberpunk.mp3";
       this.play();
     }
 
-    file.onchange = () => {
-      const files = this.files;
-      this.audio.src = URL.createObjectURL(files[0]);
-      this.play();
-    }
+    file.onchange = (e) => this.handleChange(e);
+  }
+
+  handleChange(e) {
+    // debugger
+    const newsong = e.target.files[0]
+    audio.src = URL.createObjectURL(newsong);
+    this.play();
   }
 
   play() {

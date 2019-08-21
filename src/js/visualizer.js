@@ -29,11 +29,6 @@ class Visualizer {
     this.UP = false;
     this.RIGHT = false;
 
-    this.leftPoints = 0;
-    this.downPoints = 0;
-    this.upPoints = 0;
-    this.rightPoints = 0;
-
     this.incorrect = true;
     this.incorrect2 = true;
     this.incorrect3 = true;
@@ -41,11 +36,13 @@ class Visualizer {
 
     this.points = 0;
     this.renderFrame = this.renderFrame.bind(this);
+    this.handlePress = this.handlePress.bind(this);
+    document.addEventListener("keydown", this.handlePress);
   }
 
   displayPoints(text) {
-    let alpha = 1.0,   
-      interval = setInterval(() => {
+    let alpha = 1;
+    let interval = setInterval(() => {
         this.canvas.width = canvas.width; 
         this.ctx.fillStyle = "rgba(255, 0, 140, " + alpha + ")";
         this.ctx.font = "bold 25pt Arial";
@@ -55,7 +52,7 @@ class Visualizer {
           this.ctx.width = this.ctx.width;
           clearInterval(interval);
         }
-      }, 50);
+      }, 1000 / 60);
   } 
 
   handlePress(e) {
@@ -237,8 +234,6 @@ class Visualizer {
             }
           }
         }
-
-        document.addEventListener("keydown", this.handlePress);
 
         // Rendering left arrow
         if (j === 0 && this.lightup) {
