@@ -4,10 +4,15 @@ import UpArrow from './up_arrow';
 import RightArrow from './right_arrow';
 
 class Visualizer {
-  constructor(analyser, dataArray, ctx) {
+  constructor(analyser, dataArray, canvas) {
     this.analyser = analyser;
     this.dataArray = dataArray;
-    this.ctx = ctx;
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext("2d");
+    this.WIDTH = this.canvas.width;
+    this.HEIGHT = this.canvas.height;
+    this.bufferLength = this.analyser.frequencyBinCount;
+    this.barWidth = (this.WIDTH / this.bufferLength) * 9; 
 
     this.leftArrow = new LeftArrow(this.ctx);
     this.downArrow = new DownArrow(this.ctx);
@@ -35,18 +40,19 @@ class Visualizer {
     this.incorrect4 = true;
 
     this.points = 0;
+    this.renderFrame = this.renderFrame.bind(this);
   }
 
   displayPoints(text) {
     let alpha = 1.0,   
-      interval = setInterval(function () {
-        canvas.width = canvas.width; 
-        ctx.fillStyle = "rgba(255, 0, 140, " + alpha + ")";
-        ctx.font = "bold 25pt Arial";
-        ctx.fillText(text, 600, 50);
+      interval = setInterval(() => {
+        this.canvas.width = canvas.width; 
+        this.ctx.fillStyle = "rgba(255, 0, 140, " + alpha + ")";
+        this.ctx.font = "bold 25pt Arial";
+        this.ctx.fillText(text, 600, 50);
         alpha = alpha - 0.05; 
         if (alpha < 0) {
-          ctx.width = ctx.width;
+          this.ctx.width = this.ctx.width;
           clearInterval(interval);
         }
       }, 50);
@@ -120,7 +126,8 @@ class Visualizer {
   }
 
   renderFrame() {
-    requestAnimationFrame(renderFrame);
+    requestAnimationFrame(this.renderFrame);
+    let barHeight;
     let x = 0;
 
     this.analyser.getByteFrequencyData(this.dataArray);
@@ -174,9 +181,9 @@ class Visualizer {
           b = 4
         }
         this.ctx.fillStyle = `rgb(${r},${g},${b})`;
-        this.ctx.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
+        this.ctx.fillRect(x, (this.HEIGHT - barHeight), this.barWidth, barHeight);
 
-        x += barWidth + 10;
+        x += this.barWidth + 10;
 
         let count = 0;
 

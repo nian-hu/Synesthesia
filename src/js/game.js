@@ -7,12 +7,12 @@ class Game {
     this.file = document.getElementById("file");
     this.audio = document.getElementById("audio");
 
-    demo.onclick = function () {
+    demo.onclick = () => {
       this.audio.src = "src/assets/Cyberpunk.mp3";
       this.play();
     }
 
-    file.onchange = function () {
+    file.onchange = () => {
       const files = this.files;
       this.audio.src = URL.createObjectURL(files[0]);
       this.play();
@@ -37,7 +37,7 @@ class Game {
     const HEIGHT = this.canvas.height;
     const barWidth = (WIDTH / bufferLength) * 9; 
 
-    const visualizer = new Visualizer(analyser, dataArray, ctx)
+    const visualizer = new Visualizer(analyser, dataArray, this.canvas)
     audio.play();
     visualizer.renderFrame();
   }
