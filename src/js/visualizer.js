@@ -1,8 +1,18 @@
+import LeftArrow from './left_arrow';
+import DownArrow from './down_arrow';
+import UpArrow from './up_arrow';
+import RightArrow from './right_arrow';
+
 class Visualizer {
   constructor(analyser, dataArray, ctx) {
     this.analyser = analyser;
     this.dataArray = dataArray;
     this.ctx = ctx;
+
+    this.leftArrow = new LeftArrow(this.ctx);
+    this.downArrow = new DownArrow(this.ctx);
+    this.upArrow = new UpArrow(this.ctx);
+    this.rightArrow = new RightArrow(this.ctx);
 
     this.lightup = false;
     this.lightup2 = false;
@@ -23,6 +33,75 @@ class Visualizer {
     this.incorrect2 = true;
     this.incorrect3 = true;
     this.incorrect4 = true;
+
+    this.points = 0;
+  }
+
+  handlePress(e) {
+    e.preventDefault();
+
+    if (e.keyCode === 37 && this.lightup && this.incorrect) {
+      this.points += 1;
+      this.LEFT = true;
+      setTimeout(() => this.LEFT = false, 250)
+      this.lightup = false;
+      this.incorrect = !this.incorrect;
+    }
+
+    if (e.keyCode === 37 && !this.lightup && this.incorrect) {
+      this.points -= 1;
+      this.LEFT = true;
+      setTimeout(() => this.LEFT = false, 250)
+      this.incorrect = !this.incorrect;
+    }
+
+    if (e.keyCode === 40 && this.lightup2 && this.incorrect2) {
+      this.points += 1;
+      this.DOWN = true;
+      setTimeout(() => this.DOWN = false, 250)
+      this.lightup2 = false;
+      this.incorrect2 = !this.incorrect2;
+    }
+
+    if (e.keyCode === 40 && !this.lightup2 && this.incorrect2) {
+      this.points -= 1;
+      this.DOWN = true; 
+      setTimeout(() => this.DOWN = false, 250)
+      this.lightup2 = false;
+      this.incorrect2 = !this.incorrect2;
+    }
+
+    if (e.keyCode === 38 && this.lightup3 && this.incorrect3) {
+      this.points += 1;
+      this.UP = true;
+      setTimeout(() => this.UP = false, 250)
+      this.lightup3 = false;
+      this.incorrect3 = !this.incorrect3;
+    }
+
+    if (e.keyCode === 38 && !this.lightup3 && this.incorrect3) {
+      this.points -= 1;
+      this.UP = true;
+      setTimeout(() => this.UP = false, 250)
+      this.lightup3 = false;
+      this.incorrect3 = !this.incorrect3;
+    }
+
+    if (e.keyCode === 39 && this.lightup4 && this.incorrect4) {
+      this.points += 1;
+      this.RIGHT = true;
+      setTimeout(() => this.RIGHT = false, 250)
+      this.lightup4 = false;
+      this.incorrect4 = !this.incorrect4;
+    }
+
+    if (e.keyCode === 39 && !this.lightup4 && this.incorrect4) {
+      this.points -= 1;
+      this.RIGHT = true;
+      setTimeout(() => this.RIGHT = false, 250)
+      this.lightup4 = false;
+      this.incorrect4 = !this.incorrect4;
+    }
   }
 
   renderFrame() {
@@ -79,10 +158,78 @@ class Visualizer {
           g = 14
           b = 4
         }
-        ctx_bottom.fillStyle = `rgb(${r},${g},${b})`;
-        ctx_bottom.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
+        this.ctx.fillStyle = `rgb(${r},${g},${b})`;
+        this.ctx.fillRect(x, (HEIGHT - barHeight), barWidth, barHeight);
 
         x += barWidth + 10;
+
+        let count = 0;
+
+        for (let i = 0; i < newArr[0].length; i++) {
+          if (newArr[0][i] > 250) {
+            count += 1;
+
+            if (count >= 4 && lightup === false) {
+              lightup = true;
+              setTimeout(() => lightup = false, 750);
+              count = 0;
+            }
+          }
+        }
+
+        let count2 = 0;
+        for (let i = 0; i < newArr[1].length; i++) {
+          if (newArr[1][i] > 190) {
+            count2 += 1;
+
+            if (count2 >= 4 && lightup2 === false) {
+              lightup2 = true;
+              setTimeout(() => lightup2 = false, 750)
+              count2 = 0;
+            }
+          }
+        }
+        
+        let count3 = 0;
+        for (let i = 0; i < newArr[2].length; i++) {
+          if (newArr[2][i] > 170) {
+            count3 += 1;
+
+            if (count3 >= 4 && lightup3 === false) {
+              lightup3 = true;
+              setTimeout(() => lightup3 = false, 750)
+              count3 = 0;
+            }
+          }
+        }
+
+        let count4 = 0;
+        for (let i = 0; i < newArr[3].length; i++) {
+          if (newArr[3][i] > 50) {
+            count4 += 1;
+
+            if (count4 >= 4 && lightup4 === false) {
+              lightup4 = true;
+              setTimeout(() => lightup4 = false, 750)
+              count4 = 0;
+            }
+          }
+        }
+
+        document.addEventListener("keydown", this.handlePress);
+
+        if (j === 0 && this.lightup) {
+          this.leftArrow.drawColored();
+        } else if (j === 0 && !this.lightup) {
+          this.leftArrow.drawNormal();
+        }
+
+        if (j === 0 && this.LEFT && this.lightup) {
+          this.leftArrow.drawPressed();
+        }
+
+        
+
       }
     }
   }
