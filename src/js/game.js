@@ -1,4 +1,7 @@
 import LeftArrow from './left_arrow';
+import DownArrow from './down_arrow';
+import UpArrow from './up_arrow';
+import RightArrow from './right_arrow';
 
 class Game {
   constructor() {
