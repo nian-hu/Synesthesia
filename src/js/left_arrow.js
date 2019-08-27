@@ -1,33 +1,36 @@
 class LeftArrow {
-  constructor(array, ctx) {
-    this.array = array;
+  constructor(ctx) {
     this.pos = [10, 10];
     this.ctx = ctx;
-    this.state = { colored: false }
+
+    this.coloredLeftArrow = new Image();
+    this.coloredLeftArrow.src = "src/assets/colored_left_arrow.png";
+
+    this.pressedLeftArrow = new Image();
+    this.pressedLeftArrow.src = "src/assets/pressed_left_arrow.png";
+
+    this.incorrectLeftArrow = new Image();
+    this.incorrectLeftArrow.src = "src/assets/incorrect_left_arrow.png"
+
+    this.leftArrow = new Image();
+    this.leftArrow.src = "src/assets/left_arrow.png";
   }
 
-  calculateAverage() {
-    let sum = 0;
-    for (let i = 0; i < this.array.length; i++) {
-      sum += this.array[i];
-    }
-    this.avg = sum / this.array.length;
-    return this.avg;
+  drawColored() {
+    this.ctx.drawImage(this.coloredLeftArrow, this.pos[0], this.pos[1]);
   }
 
-  isColored() {
-    if (this.avg)
+  drawNormal() {
+    this.ctx.drawImage(this.leftArrow, this.pos[0], this.pos[1]);
   }
 
-  drawArrow() {
-    if (this.state.colored) {
-      let coloredLeftArrow = new Image();
-      coloredLeftArrow.src = "src/assets/colored_left_arrow.png";
-    }
+  drawPressed() {
+    this.ctx.drawImage(this.pressedLeftArrow, this.pos[0], this.pos[1]);
+  }
 
-
-    this.ctx.drawImage(this.img, this.pos[0], this.pos[1]);
-    setTimeout();
-    clearTimeout();
+  drawIncorrect() {
+    this.ctx.drawImage(this.incorrectLeftArrow, this.pos[0], this.pos[1]);
   }
 }
+
+export default LeftArrow;
