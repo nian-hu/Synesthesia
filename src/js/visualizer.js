@@ -40,21 +40,6 @@ class Visualizer {
     document.addEventListener("keydown", this.handlePress);
   }
 
-  displayPoints(text) {
-    let alpha = 1;
-    let interval = setInterval(() => {
-        this.canvas.width = canvas.width; 
-        this.ctx.fillStyle = "rgba(255, 0, 140, " + alpha + ")";
-        this.ctx.font = "bold 25pt Arial";
-        this.ctx.fillText(text, 600, 50);
-        alpha = alpha - 0.05; 
-        if (alpha < 0) {
-          this.ctx.width = this.ctx.width;
-          clearInterval(interval);
-        }
-      }, 1000 / 60);
-  } 
-
   handlePress(e) {
     e.preventDefault();
 
@@ -123,7 +108,11 @@ class Visualizer {
   }
 
   renderFrame() {
-    requestAnimationFrame(this.renderFrame);
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillStyle = "rgba(255, 0, 140, " + 1 + ")";
+    this.ctx.font = "bold 25pt Arial";
+    this.ctx.fillText(this.points, 600, 50);
+    // debugger
     let barHeight;
     let x = 0;
 
@@ -131,7 +120,7 @@ class Visualizer {
     let r, g, b;
     let bars = 40;
 
-    let quarterLength = this.dataArray.length / 4;
+    let quarterLength = 128;
 
     let first = this.dataArray.slice(0, quarterLength);
     let second = this.dataArray.slice(quarterLength, quarterLength * 2);
@@ -179,6 +168,7 @@ class Visualizer {
         }
         this.ctx.fillStyle = `rgb(${r},${g},${b})`;
         this.ctx.fillRect(x, (this.HEIGHT - barHeight), this.barWidth, barHeight);
+        debugger
 
         x += this.barWidth + 10;
 
@@ -300,9 +290,9 @@ class Visualizer {
       this.incorrect2 = true;
       this.incorrect3 = true;
       this.incorrect4 = true;
-
-      this.displayPoints(this.points);
     }
+
+    requestAnimationFrame(this.renderFrame);
   }
 }
 
