@@ -5,37 +5,27 @@
 
 ## Background and Overview
 
-Synesthesia is a DDR-inspired music-adapting game where users can upload their own music to generate a customized game. The speed and difficulty of each game is determined by the specific song that is uploaded. The game also comes pre-loaded with a demo song, "Cyberpunk" by SYN.
+Synesthesia is a Dance Dance Revolution-inspired music-adapting game where users can upload their own music to generate a customized game. The speed and difficulty of each game is determined by the specific song that is uploaded. The game comes pre-loaded with a demo song, "Cyberpunk" by SYN.
 
-![](src/assets/synesthesia-gif.gif)
+![](src/assets/Synesthesia_Demo.gif)
 
 Synesthesia was built with Web Audio API and HTML5 Canvas. When users upload an MP3 file, it generates an audio visualizer that is rendered in real time and synchronized with the song. 
 
 The visualizer captures frequency data throughout the duration of the song and transforms the data points into bars of varying heights, where the height corresponds to the frequency. The bars are organized from highest to lowest frequencies, and they are separated and color-coded into four equally-sized sections for the purposes of the game.
 
 ```
-// Create new audio context
-    const context = new AudioContext();
-// Give the audio context an audio source
-    let src = context.createMediaElementSource(audio);
-// Create analyzer for audio context
-    const analyser = context.createAnalyser();
-// Connect the audio source to the analyzer
-    src.connect(analyser);
-// Send sound to speakers
-    analyser.connect(context.destination);
-// Use Fast Fourier Transform algorithm to get frequency domain information
-    analyser.fftSize = 1024;
-// Calculate the number of data values available for the visualization
-    const bufferLength = analyser.frequencyBinCount;
-// Create an array with length of bufferLength where all values are 0
-    const dataArray = new Uint8Array(bufferLength);
+const context = new AudioContext();
+let src = context.createMediaElementSource(audio);
+const analyser = context.createAnalyser();
+src.connect(analyser);
+analyser.connect(context.destination);
+analyser.fftSize = 1024;
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
     
 //...
-
-// Fills the array with frequency information instead of zeros
     
-    analyser.getByteFrequencyData(dataArray);
+analyser.getByteFrequencyData(dataArray);
 ```
 
 When four out of the ten frequency bars in a given section reach a certain height on the screen, the arrow key on the corresponding section of the screen will light up in a different color.
@@ -81,7 +71,7 @@ if (j === 0 && LEFT && lightup) {
 }
 ```
 
-Incorrect key presses, on the other hand, result in single-point deductions. When the arrow is pressed incorrectly, it will change to a slightly darker gray color to indicate that it was pressed even though the arrow was not lit up.
+Incorrect key presses, on the other hand, result in single-point deductions. When the arrow is pressed incorrectly, it will change to a slightly darker gray color to indicate that it was pressed even though the arrow was not lit up. Points are continuously calculated and rendered on the screen. 
 
 ![](src/assets/incorrect-key-press.gif)
 
@@ -99,11 +89,6 @@ if (j === 0 && LEFT && !lightup) {
   ctx.drawImage(incorrectLeftArrow, 10, 10)
 }
 ```
-
-The points are continuously calculated and rendered on the screen. When the song finishes and the user pauses the audio player, the final score is displayed across the screen.
-
-
-![](src/assets/final-score.png)
 
 ## Functionality and MVPs
 
