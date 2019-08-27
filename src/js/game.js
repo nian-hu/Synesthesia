@@ -17,7 +17,6 @@ class Game {
   }
 
   handleChange(e) {
-    // debugger
     const newsong = e.target.files[0]
     audio.src = URL.createObjectURL(newsong);
     this.play();

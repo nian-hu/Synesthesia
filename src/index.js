@@ -38,16 +38,10 @@ class Intro {
         this.contact.style.display = "none";
       }
     }
-
-    // this.document.addEventListener("keydown", this.handlePress);
   }
 
   loadInstructions() {
-    // const instructions = this.instructions;
-    // debugger
     this.instructionsButton.onclick = () => {
-      // debugger
-      // this.instructions.style.display = "block";
       this.instructions.style.display = "block";
     }
     this.instructionsButton.click();
